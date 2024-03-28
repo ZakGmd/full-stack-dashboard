@@ -12,7 +12,6 @@ const config: Config = {
   darkMode: "class",
   theme: {
     extend: {
-      
       animation: {
         aurora: "aurora 60s linear infinite",
       },
