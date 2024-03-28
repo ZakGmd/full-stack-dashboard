@@ -11,6 +11,15 @@ export default function Page(){
                         <Image src={"../searchIcon.svg"} alt={"search icon blue thin"} width={20} height={20}/>
                         <input type="text" name="search" id="searchInput" placeholder="Search for Something" className="bg-[#F5F7FA] ring-0 outline-none max-w-[176px] placeholder:text-[15px] placeholder:font-normal placeholder:text-[#8BA3CB] text-gray-600" />
                     </div>
+                    <div className="flex w-[50px] h-[50px] items-center justify-center bg-[#F5F7FA] shrink-0 rounded-full">
+                        <Image src={'../settings.svg'} alt={'settings icon blue thin'} width={25} height={25}  />
+                    </div>
+                    <div className="flex w-[50px] h-[50px] items-center justify-center bg-[#F5F7FA] shrink-0 rounded-full">
+                        <Image src={'../notification.svg'} alt={'settings icon blue thin'} width={25} height={25}  />
+                    </div>
+                    <div className="flex w-[320px] h-[320px] items-center justify-center bg-[#F5F7FA] shrink-0 rounded-full">
+                        <Image src={'../notification.svg'} alt={'settings icon blue thin'} width={25} height={25}  />
+                    </div>
                 </div>
             </div>
             
