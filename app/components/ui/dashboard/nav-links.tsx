@@ -38,14 +38,15 @@ export default function NavLinks(){
           const icon = link.icon ; 
           const activeIcon = link.activeIcon ;
           return(
-            <Link key={link.name} href={link.href} className={clsx('w-full flex items-center justify-center gap-6 text-[18px] font-medium leading-normal',
+            <Link key={link.name} href={link.href} className={clsx('w-full flex items-center  gap-6 text-[18px] font-medium leading-normal pl-11  ',
             {
-              'text-[#2D60FF]': pathname === link.href,
+              'text-[#2D60FF]': pathname === link.href ,
+              'text-[#B1B1B1]' : pathname !== link.href ,
             },
             )}
             >
               {pathname == link.href ? <Image src={activeIcon} alt={''} width={25} height={15} />  : <Image src={icon} alt={''} width={25} height={15} /> }
-              <div>{link.name}</div>
+              <div >{link.name}</div>
             </Link>
           )
         })}
