@@ -40,12 +40,12 @@ export default function NavLinks(){
           return(
             <Link key={link.name} href={link.href} className={clsx('w-full flex items-center  gap-6 text-[18px] font-medium leading-normal pl-11  ',
             {
-              'text-[#2D60FF]': pathname === link.href ,
+              'text-[#0070f3]': pathname === link.href ,
               'text-[#B1B1B1]' : pathname !== link.href ,
             },
             )}
             >
-              {pathname == link.href ? <Image src={activeIcon} alt={''} width={25} height={15} />  : <Image src={icon} alt={''} width={25} height={15} /> }
+              {pathname == link.href ? <Image src={activeIcon} alt={''} width={25} height={25}  />  : <Image src={icon} alt={''} width={25} height={25} className="opacity-100 hover:opacity-85 transition duration-200 ease-in-out"/> }
               <div >{link.name}</div>
             </Link>
           )
