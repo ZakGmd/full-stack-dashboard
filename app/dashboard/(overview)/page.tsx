@@ -37,26 +37,18 @@ export default function Page(){
                         <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px]">Recent Transaction</div>
                     </div>
                 </div>
-                <div className=" pt-6  bg-gradient-to-b from-white/5 from-2.61% to-gray-100/0 rounded-3xl w-[350px] h-[235px] flex flex-col gap-8 ">
-                    <div className="flex items-center justify-between pl-[26px] pr-6 w-full">
-                        <div className="flex flex-col gap-1 items-start">
-                            <div className={`${lato.className} text-[12px] font-[300] leading-normal text-white `}>Balance</div>
-                            <div className={`${lato.className} text-[20px] font-[400] leading-normal text-white `}>$5,756</div>
+                <div className="px-2 py-3 bg-gradient-to-b from-white/5 from-2% to-white/10 ring-1 ring-white/15 blur-[0.03px] rounded-[8px] min-w-[270px] max-w-[270px] h-[235px] flex flex-col gap-4 ">
+                    <div className="flex items-center justify-between shrink-0 ">
+                        <div className=" inline-flex items-center gap-1 ">
+                            <Image src={"../dots-6.svg"} alt={""} height={18} width={18}/>
+                            <div className={` px-[4px] py-[3px] bg-white/15 ring-1 ring-white/5 text-center text-[11px] flex items-center font-[400] rounded text-slate-100 tracking-[-0.13px] `}>TO DO</div>
                         </div>
-                        <Image src={"../ChipCard.svg"} alt={"chip card svg icon"} width={35} height={35} />
+                        <Image src={"../three-dots.svg"} alt={""} height={20} width={20} className="cursor-pointer"/>
                     </div>
-                    <div className="max-w-[227px] pl-[26px] flex items-center justify-between">
-                        <div className="flex flex-col items-start">
-                            <div className={`${lato.className} text-white/70 text-[12px] font-[300] leading-normal`}>CARD HOLDER</div>
-                            <div className={`${lato.className} text-white text-[15px] font-[400] leading-normal`}>Eddy Cusuma</div>
-                        </div>
-                        <div className="flex flex-col items-start">
-                            <div className={`${lato.className} text-white/70 text-[12px] font-[300] leading-normal`}>VALID THRU</div>
-                            <div className={`${lato.className} text-white text-[15px] font-[400] leading-normal`}>12/22</div>
-                        </div>
-
+                    <div className="inline-flex items-center gap-1 ">
+                        <Image src={"../plus-circle.svg"} alt={""} height={18} width={18} />
+                        <div className=""></div>
                     </div>
-                    <div className=" bg-gradient-to-b from-white/15 from-0% to-white/0 to-100% w-full h-[70px]"></div>
                 </div>
             </div>
         </div>

@@ -38,10 +38,10 @@ export default function NavLinks(){
           const icon = link.icon ; 
           const activeIcon = link.activeIcon ;
           return(
-            <Link key={link.name} href={link.href} className={clsx('w-full flex items-center  gap-6 text-[18px] font-medium leading-normal pl-11  ',
+            <Link key={link.name} href={link.href} className={clsx('w-full flex items-center  gap-6 text-[18px] font-medium leading-normal pl-11 hover:opacity-85 transition duration-200 ease-in-out"  ',
             {
-              'text-[#0070f3]': pathname === link.href ,
-              'text-[#B1B1B1]' : pathname !== link.href ,
+              'text-white': pathname === link.href ,
+              'text-[#6f6f6f]' : pathname !== link.href ,
             },
             )}
             >
