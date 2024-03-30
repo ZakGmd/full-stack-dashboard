@@ -30,15 +30,11 @@ export default function Page(){
                 </div>
             </div>
             <div className="h-[100vh] bg-[#161616] gap-5 w-full flex flex-col px-10 py-6">
-                <div className="flex items-start justify-between w-full pr-[183px]">
-                    <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px] ">Tickets</div>
-                    <div className="max-w-[300px] w-full flex items-center gap-9">
-                        <div className="text-[17px] text-white font-semibold leading-normal text-right cursor-pointer ">See All</div>
-                        <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px]">Recent Transaction</div>
-                    </div>
-                </div>
-                <div className="inline-flex items-center gap-3">
-                  <div className="px-2 py-3 bg-gradient-to-b from-white/5 from-2% to-white/10 ring-1 ring-white/15 blur-[0.03px] rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-9 ">
+                <div className=" grid grid-cols-3 items-start gap-4">
+                    <div className="col-span-2 inline-flex flex-col items-start gap-3 pr-[183px] ">
+                      <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px] ">Tickets</div>
+                      <div className="inline-flex items-center gap-3">
+                  <div className="px-2 py-3 bg-gradient-to-b from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-9 ">
                     <div className="flex items-center justify-between shrink-0 ">
                         <div className=" inline-flex items-center gap-1 ">
                             <Image src={"../dots-6.svg"} alt={""} height={18} width={18}/>
@@ -51,7 +47,7 @@ export default function Page(){
                         <div className="text-[12px] text-slate-50 leading-tight tracking-[-0.12px]">Create</div>
                     </div>
                   </div>
-                  <div className="px-2 py-3 bg-gradient-to-b from-white/5 from-2% to-white/10 ring-1 ring-white/15 blur-[0.03px] rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-9 ">
+                  <div className="px-2 py-3 bg-gradient-to-b from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-9 ">
                     <div className="flex items-center justify-between shrink-0 ">
                         <div className=" inline-flex items-center gap-1 ">
                             <Image src={"../dots-6.svg"} alt={""} height={18} width={18}/>
@@ -64,7 +60,7 @@ export default function Page(){
                         <div className="text-[12px] text-slate-50 leading-tight tracking-[-0.12px]">Create</div>
                     </div>
                   </div>
-                  <div className="px-2 py-3 bg-gradient-to-b from-white/5 from-2% to-white/10 ring-1 ring-white/15 blur-[0.03px] rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-9 ">
+                  <div className="px-2 py-3 bg-gradient-to-b from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-9 ">
                     <div className="flex items-center justify-between shrink-0 ">
                         <div className=" inline-flex items-center gap-1 ">
                             <Image src={"../dots-6.svg"} alt={""} height={18} width={18}/>
@@ -77,7 +73,16 @@ export default function Page(){
                         <div className="text-[12px] text-slate-50 leading-tight tracking-[-0.12px]">Create</div>
                     </div>
                   </div>
+                      </div>
+                    </div>
+                    <div className="col-span-1  inline-flex flex-col gap-3 items-start px-3">
+                      <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px]">Recent Transaction</div>
+                      <div className="h-[270px] w-full  bg-gradient-to-b from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] "></div>
+                    </div>
+
                 </div>
+               
+                
                 
             </div>
         </div>
