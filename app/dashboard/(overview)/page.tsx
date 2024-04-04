@@ -1,12 +1,37 @@
+"use client"
 import Image from "next/image"
 import { Lato } from "next/font/google" ;
 import Link from "next/link";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend    } from "chart.js/auto";
+import { Doughnut } from "react-chartjs-2";
+ChartJS.register(ArcElement, Tooltip, Legend);
+export const data = {
+    labels: ['To DO', 'IN PROGRESS','Green'],
+    datasets: [
+      {
+        label: '# of Votes',
+        data: [12, 19, 12],
+        backgroundColor: [
+          'rgba(255, 255, 255, 0.2)',
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(75, 192, 192, 0.2)',
+        ],
+        borderColor: [
+          'rgba(255, 255, 255, 1)',
+          'rgba(54, 162, 235, 1)',
+          'rgba(75, 192, 192, 1)',
+        ],
+        borderWidth: 1,
+      },
+    ],
+  };
 
 const lato = Lato({
     weight: ["300" ,"400" ,"700"] ,
     subsets: ['latin'],
 
 })
+
 
 export default function Page(){
 
@@ -32,7 +57,7 @@ export default function Page(){
             </div>
             <div className="h-[100vh] bg-[#161616] gap-5 w-full flex flex-col px-10 py-6">
                 <div className=" grid grid-cols-3 items-start gap-4">
-                    <div className="col-span-2 inline-flex flex-col items-start gap-3 pr-[183px] ">
+                    <div className="col-span-2 inline-flex flex-col items-start gap-3  ">
                       <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px] ">Tickets</div>
                       <div className="inline-flex items-center gap-3">
                   <div className="px-2 py-3 bg-gradient-to-b from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-9 ">
@@ -75,6 +100,12 @@ export default function Page(){
                     </div>
                   </div>
                       </div>
+                       <div className="flex flex-col items-start gap-3 mt-2 w-full">
+                            <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px]">Status overview</div>
+                            <div className="bg-gradient-to-b w-full h-[590px] from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] ">
+                                <Doughnut data={data} />
+                            </div>
+                        </div>         
                     </div>
                     <div className="col-span-1  inline-flex flex-col gap-3 items-start px-3">
                       <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px]">Recent activity</div>

@@ -13,10 +13,10 @@ const links = [
       activeIcon: '/homeIconActive.svg' ,
      },
      {
-      name: 'Tickets',
+      name: 'List',
       href: '/dashboard/tickets',
-      icon: '../transferIcon.svg' ,
-      activeIcon: '/transferIconActive.svg' ,
+      icon: '../listIcon.svg' ,
+      activeIcon: '/listIconActive.svg' ,
       
     },
     { name: 'Accounts',
