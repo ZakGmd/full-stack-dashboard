@@ -87,10 +87,10 @@ export default function Page(){
                                 <div className=" w-8 h-8 rounded-full bg-gradient-to-b from-white/0 to-white/5 ring-1 ring-white/10 flex shrink-0 "></div>
                                 <div className="flex flex-col items-start gap-1">
                                     <div className="text-[14px] leading-5 tracking-[-0.12px] font-normal text-white max-w-[280px]  ">
-                                        <Link className="text-[#0052CC] font-medium" href={""}>Zakaria Ghoumidate </Link>
+                                        <Link className="text-blue-600 font-medium" href={""}>Zakaria Ghoumidate </Link>
                                          changed the status to In Progress on 
-                                        <Link className="  text-[#0052CC]" href={""}>
-                                            <Image src={"../checkIcon.svg"} alt={"check blue icon svg"} width={12} height={12} className=" align-middle inline-flex mx-1 "/>Zak-2asdsadadad
+                                        <Link className="  text-blue-600 font-medium pt-[2px]" href={""}>
+                                            <Image src={"../checkIcon.svg"} alt={"check blue icon svg"} width={16} height={16} className=" align-middle inline-flex mx-1 mb-[2px] "/>Zak-2asdsadadad
                                         </Link>
                                     </div>
                                     <div  className="text-[12px]  leading-3 tracking-[-0.12px] font-normal text-gray-400">4 minutes ago</div>
