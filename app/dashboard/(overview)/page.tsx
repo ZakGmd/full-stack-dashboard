@@ -110,20 +110,20 @@ export default function Page(){
                             <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px]">Status overview</div>
                             <div className="bg-gradient-to-b w-full  from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] px-10 py-5 ">
                                 <div className="flex flex-col items-center w-full gap-9" >
-                                  <div className="text-[14px] leading-5 tracking-[-0.12px] font-normal text-white text-center ">Get a snapshot of the status of your items. View all items</div>
+                                  <div className="text-[14px] leading-5 tracking-[-0.12px] font-normal text-white text-center ">Get a snapshot of the status of your items. <Link href={"/"} className="text-blue-600 font-light">View all items</Link></div>
                                   <div className="flex items-center justify-between w-full">
                                     <div className=" w-[380px] h-[320px]  ">
     
                                         <DoughnutChart type={"doughnut"} data={Data} options={chartOptions}/>
                                     </div>
                                     <div className=" w-[320px]  items-center flex justify-center">
-                                       <div className="flex flex-col items-start justify-center gap-5">
+                                       <div className="flex flex-col items-start justify-center gap-5 w-full">
                                        {
                                             Data.labels.map((label , index)=>{
                                                 return (
-                                                    <div key={index} className="flex items-center gap-2">
-                                                        <div className="text-white text-[20px] flex items-center gap-2 font-medium leading-normal  tracking-[-0.12px]"><span style={{ backgroundColor: Data.datasets[0].borderColor[index] , width: ' 12px' , height: '12px' , display: "inline-flex" }} className="  rounded-[4px] "></span> {label} :</div>
-                                                        <div className="text-blue-600 text-[22px]  font-normal leading-normal  tracking-[-0.12px]">{Data.datasets[0].data[index]}%</div>
+                                                    <div key={index} className="flex items-center justify-between w-full ">
+                                                        <div className="text-white text-[16px] flex items-center gap-2 font-medium leading-normal  tracking-[-0.12px]"><span style={{ backgroundColor: Data.datasets[0].borderColor[index] , width: ' 16px' , height: '16px' , display: "inline-flex" }} className="  rounded-[4px] "></span> {label} :</div>
+                                                        <div className="text-blue-200 text-[14px]  font-normal leading-normal  tracking-[-0.12px]">{Data.datasets[0].data[index]}</div>
 
                                                     </div>
                                                     
