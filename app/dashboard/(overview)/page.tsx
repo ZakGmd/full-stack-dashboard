@@ -74,7 +74,7 @@ export default function Page(){
                         </div>
                         <Image src={"../three-dots.svg"} alt={""} height={20} width={20} className="cursor-pointer"/>
                          </div>
-                         <div className="w-full  bg-gradient-to-b px-2 py-3  from-white/20 from-2% to-white/10 ring-1 ring-white/25 rounded-lg flex flex-col gap-6 cursor-grab">
+                         <div className="w-full  bg-gradient-to-b px-2 py-3  from-white/20 from-2% to-white/10 ring-1 ring-white/25 rounded-lg flex flex-col gap-6 hover:bg-white/5 transition-all duration-300 ease">
                             <div className="flex items-center justify-between">
                                 <div className="text-[14px] leading-3 tracking-[-0.12px] font-normal text-white">hey</div>
                                 <Image src={"../three-dots.svg"} alt={""} width={20} height={20}/>
