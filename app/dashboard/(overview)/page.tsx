@@ -1,18 +1,19 @@
 "use client"
 import Image from "next/image"
-import { Lato } from "next/font/google" ;
 import Link from "next/link";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend    } from "chart.js/auto";
-import { Doughnut } from "react-chartjs-2";
+import { Chart as ChartJS, ArcElement, Tooltip, Legend, plugins    } from "chart.js/auto";
+import  DoughnutChart  from "../../components/ui/dashboard/chart" ;
 ChartJS.register(ArcElement, Tooltip, Legend);
-export const data = {
-    labels: ['To DO', 'IN PROGRESS','Green'],
+
+
+ const Data = {
+    labels: ['TO DO', 'IN PROGRESS','DONE'],
     datasets: [
       {
-        label: '# of Votes',
-        data: [12, 19, 12],
+        label: "Todo" ,
+        data: [20, 20, 60],
         backgroundColor: [
-          'rgba(255, 255, 255, 0.2)',
+          'rgba(255, 255, 255, 0.5)',
           'rgba(54, 162, 235, 0.2)',
           'rgba(75, 192, 192, 0.2)',
         ],
@@ -21,16 +22,21 @@ export const data = {
           'rgba(54, 162, 235, 1)',
           'rgba(75, 192, 192, 1)',
         ],
-        borderWidth: 1,
+        borderWidth: 1,   
       },
     ],
   };
+  const chartOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+     plugins:{
+            legend:{
+                display : false ,
+            }
+          } ,
+  };
 
-const lato = Lato({
-    weight: ["300" ,"400" ,"700"] ,
-    subsets: ['latin'],
 
-})
 
 
 export default function Page(){
@@ -55,7 +61,7 @@ export default function Page(){
                     </div>
                 </div>
             </div>
-            <div className="h-[100vh] bg-[#161616] gap-5 w-full flex flex-col px-10 py-6">
+            <div className="h-[100vh] bg-[#161616] gap-5 w-full flex flex-col pl-10 pr-2 py-6 overflow-scroll scrollbar">
                 <div className=" grid grid-cols-3 items-start gap-4">
                     <div className="col-span-2 inline-flex flex-col items-start gap-3  ">
                       <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px] ">Tickets</div>
@@ -102,8 +108,34 @@ export default function Page(){
                       </div>
                        <div className="flex flex-col items-start gap-3 mt-2 w-full">
                             <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px]">Status overview</div>
-                            <div className="bg-gradient-to-b w-full h-[590px] from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] ">
-                                <Doughnut data={data} />
+                            <div className="bg-gradient-to-b w-full  from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] px-10 py-5 ">
+                                <div className="flex flex-col items-center w-full gap-9" >
+                                  <div className="text-[14px] leading-5 tracking-[-0.12px] font-normal text-white text-center ">Get a snapshot of the status of your items. View all items</div>
+                                  <div className="flex items-center justify-between w-full">
+                                    <div className=" w-[380px] h-[320px]  ">
+    
+                                        <DoughnutChart type={"doughnut"} data={Data} options={chartOptions}/>
+                                    </div>
+                                    <div className=" w-[320px]  items-center flex justify-center">
+                                       <div className="flex flex-col items-start justify-center gap-5">
+                                       {
+                                            Data.labels.map((label , index)=>{
+                                                return (
+                                                    <div key={index} className="flex items-center gap-2">
+                                                        <div className="text-white text-[20px] flex items-center gap-2 font-medium leading-normal  tracking-[-0.12px]"><span style={{ backgroundColor: Data.datasets[0].borderColor[index] , width: ' 12px' , height: '12px' , display: "inline-flex" }} className="  rounded-[4px] "></span> {label} :</div>
+                                                        <div className="text-blue-600 text-[22px]  font-normal leading-normal  tracking-[-0.12px]">{Data.datasets[0].data[index]}%</div>
+
+                                                    </div>
+                                                    
+                                                )
+                                            })
+                                        }
+                                       </div>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                                
                             </div>
                         </div>         
                     </div>

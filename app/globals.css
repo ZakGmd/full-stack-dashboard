@@ -7,3 +7,16 @@
     margin: 0;
     box-sizing: border-box;
 }
+.scrollbar::-webkit-scrollbar{
+    width: 8px;
+}
+.scrollbar::-webkit-scrollbar-track{
+    background: rgba(15, 40, 55, 0.748) ;
+   
+}
+.scrollbar::-webkit-scrollbar-thumb{
+    background-color:#2c1345cd;
+    
+    border: 2px solid rgba(21, 64, 91, 0.515)  ;
+
+}
