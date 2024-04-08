@@ -30,9 +30,9 @@ export default function Tickets(){
                         </div>
                         <div className="text-[13px] leading-4 font-normal tracking-[-0.11px] text-gray-100   text-center w-[109px] border-l border-white/40 py-3 ">Type</div>
                         <div className="py-3 pl-3  w-[110px] border-l border-r  border-white/40 text-start text-[13px] leading-4 font-normal tracking-[-0.11px] text-gray-100 flex items-center gap-2 "><Image src={"../hashtag.svg"} alt="hashtag logo svg light gray" width={18} height={18}/> Key</div>
-                        <div className="py-3 pl-3 w-[450px] text-[13px] leading-4 font-normal tracking-[-0.11px] text-gray-100 border-r border-white/40 flex items-center gap-2"><Image src={"../bars-sort.svg"} alt="hashtag logo svg light gray" width={18} height={18}/>Summary</div>
+                        <div className="py-3 pl-3 w-[450px] text-[13px] leading-4 font-normal tracking-[-0.11px] text-gray-100 border-r border-white/40 flex items-center gap-2"><Image src={"../Group.svg"} alt="hashtag logo svg light gray" width={18} height={18}/>Summary</div>
                         <div className="py-3 pl-3 text-[13px] leading-4 font-normal tracking-[-0.11px] text-gray-100 w-[140px]  border-r  border-white/40 text-start flex items-center gap-2 "><Image src={"../status-up.svg"} alt="hashtag logo svg light gray" width={18} height={18}/>Status</div>
-                        <div className="py-3 pl-3 text-[13px] leading-4 font-normal tracking-[-0.11px] text-gray-100 w-[229px]  border-r  border-white/40 text-start "> @  Assignee</div>
+                        <div className="py-3 pl-3 text-[13px] leading-4 font-normal tracking-[-0.11px] text-gray-100 w-[229px]  border-r  border-white/40 text-start flex items-center gap-2"><Image src={"../at-circle.svg"} alt="hashtag logo svg light gray" width={18} height={18}/>Assigne</div>
                         <div className="py-3 pl-3 text-[13px] leading-4 font-normal tracking-[-0.11px] text-gray-100 w-[140px] inline-flex items-center gap-2  text-start ">
                            <Image src={"../arrow-up.svg"} alt="hashtag logo svg light gray" width={18} height={18}/>
                             Priority
