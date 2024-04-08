@@ -121,11 +121,11 @@ export default function Page(){
                       </div>
                        <div className="flex flex-col items-start gap-3 mt-2 w-full">
                             <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px]">Status overview</div>
-                            <div className="bg-gradient-to-b w-full  from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] px-10 py-5 ">
-                                <div className="flex flex-col items-center w-full gap-9" >
+                            <div className="bg-gradient-to-b w-full  from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] px-10 py-5 mb-[100px]  ">
+                                <div className="flex flex-col items-center w-full gap-9 " >
                                   <div className="text-[14px] leading-5 tracking-[-0.12px] font-normal text-white text-center ">Get a snapshot of the status of your items. <Link href={"/"} className="text-blue-600 font-light">View all items</Link></div>
                                   <div className="flex items-center justify-between w-full">
-                                    <div className=" w-[380px] h-[320px]  ">
+                                    <div className=" w-[310px] h-[280px]  ">
     
                                         <DoughnutChart type={"doughnut"} data={Data} options={chartOptions}/>
                                     </div>
