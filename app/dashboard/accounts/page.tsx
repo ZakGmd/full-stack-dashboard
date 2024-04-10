@@ -21,7 +21,7 @@ export default function Accounts(){
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col items-start w-full py-5 px-10 overflow-y-scroll h-[180vh]">
+            <div className="flex flex-col items-start w-full py-5 px-10 overflow-y-scroll scrollbar h-[100vh]">
                 <div className="inline-flex items-center justify-between w-full">
                     <div className="text-white text-[24px] leading-7 tracking-[-0.12px] font-medium">People and teams</div>
                     <div className="flex items-center gap-4 shrink-0">
@@ -56,7 +56,7 @@ export default function Accounts(){
                      </div>
                      <div className="flex flex-col items-start gap-7 mt-4 w-full ">
                         <div className="text-white text-[18px] leading-7 tracking-[-0.12px] font-medium">Your teams</div>
-                        <div className="flex flex-col items-center justify-center gap-5 w-full mb-[800px]">
+                        <div className="flex flex-col items-center justify-center gap-5 w-full mb-[100px]">
                             <Image src={"/network.svg"} alt="" width={188} height={137} />
                             <div className="text-[22px] font-medium text-center leading-7 tracking-[-0.13px] text-ellipsis text-white">Share pages or mention teams rather than <br /> individual members</div>
                             <div className="text-white font-normal">Create a team now or learn <span className="text-blue-600">how you can collaborate with teams</span></div>
