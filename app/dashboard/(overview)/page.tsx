@@ -24,22 +24,22 @@ export default function Page(){
                     </div>
                 </div>
             </div>
-            <div className="h-[100vh] bg-[#161616] gap-5 w-full flex flex-col pl-10 pr-2 py-6 overflow-scroll scrollbar">
+            <div className="h-[100vh]  gap-5 w-full flex flex-col pl-10 pr-2 py-6 overflow-scroll scrollbar">
                 <div className=" grid grid-cols-3 items-start gap-4">
                     <div className="col-span-2 inline-flex flex-col items-start gap-3  ">
-                      <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px] ">Tickets</div>
+                      <div className="text-[22px] font-semibold leading-normal text-[#f7fafc] tracking-[-0.12px] ">Tickets</div>
                       <div className="inline-flex items-start gap-3">
                         <div className="px-2 py-3 bg-gradient-to-b  from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-4">
                          <div className="flex items-center justify-between shrink-0 ">
                         <div className=" inline-flex items-center gap-1 ">
                             <Image src={"../dots-6.svg"} alt={""} height={18} width={18}/>
-                            <div className={` px-[4px] py-[3px] bg-white/15 ring-1 ring-white/5 text-center text-[11px] flex items-center font-[400] rounded text-slate-100 tracking-[-0.13px] leading-3 `}>TO DO</div>
+                            <div className={` px-[4px] py-[3px] bg-white/15 ring-1 ring-white/5 text-center text-[11px] flex items-center font-[400] rounded text-[#f7fafc] tracking-[-0.13px] leading-3 `}>TO DO</div>
                         </div>
                         <Image src={"../three-dots.svg"} alt={""} height={20} width={20} className="cursor-pointer"/>
                          </div>
                          <div className="w-full  bg-gradient-to-b px-2 py-3  from-white/20 from-2% to-white/10 ring-1 ring-white/25 rounded-lg flex flex-col gap-6 hover:bg-white/5 transition-all duration-300 ease">
                             <div className="flex items-center justify-between">
-                                <div className="text-[14px] leading-3 tracking-[-0.12px] font-normal text-white">hey</div>
+                                <div className="text-[14px] leading-3 tracking-[-0.12px] font-normal text-[#f7fafc]">hey</div>
                                 <Image src={"../three-dots.svg"} alt={""} width={20} height={20}/>
                             </div>
                             <div className="flex items-center justify-between">
