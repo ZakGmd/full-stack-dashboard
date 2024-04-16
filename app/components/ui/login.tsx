@@ -1,16 +1,8 @@
 "use client";
-import Link from "next/link";
 import Image from "next/image";
-import { cn } from "@/utils/cn";
 import React, { ReactNode } from "react";
-import { motion } from "framer-motion";
 import { AuroraBackground } from "@/app/components/ui/background";
 
-
-interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
-    children: ReactNode;
-    showRadialGradient?: boolean;
-}
 
 
 
