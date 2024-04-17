@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/server": "^4.10.3",
+    "@as-integrations/next": "^3.0.0",
     "@auth/prisma-adapter": "^1.6.0",
     "@prisma/client": "^5.12.1",
     "chart.js": "^4.4.2",
     "clsx": "^2.1.0",
     "framer-motion": "^11.0.22",
+    "graphql": "^16.8.1",
+    "graphql-tag": "^2.12.6",
     "next": "14.1.4",
     "next-auth": "^4.24.7",
     "react": "^18",
@@ -22,6 +26,7 @@
     "tailwind-merge": "^2.2.2"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
