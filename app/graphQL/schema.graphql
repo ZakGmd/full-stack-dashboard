@@ -1,8 +1,17 @@
 type Query {
     fetchedUser: [User!]!
 }
-type User{
-    id: ID!
-    name: String!
-    email: string!  
+
+type User {
+ id: ID!
+ name: String!
+ prename: String! 
+ email: String! 
+ dateOfEntry: Date! 
+ tickets: [Ticket]
+}
+type Ticket{
+ ticket_id: ID! 
+ status: String!
+ description: String!
 }
