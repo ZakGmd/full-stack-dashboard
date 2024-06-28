@@ -10,6 +10,7 @@ type User {
  dateOfEntry: Date! 
  tickets: [Ticket]
 }
+
 type Ticket{
  ticket_id: ID! 
  status: String!

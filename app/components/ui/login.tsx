@@ -11,7 +11,7 @@ export default function Login(){
 
     return(
        
-         <AuroraBackground >
+         
            <form className="w-[520px] shadow-xl ring-white/15 ring-1 isolate rounded-xl bg-white/5  p-[40px] flex flex-col items-center justify-center ">
             <div className="flex flex-col items-center gap-6 w-full ">
                 <div className="text-[28px] text-center leading-5 font-semibold text-slate-100 tracking-[-0.12px] mb-4 ">Sign in</div>
@@ -49,7 +49,7 @@ export default function Login(){
                 <LoginButton/>
             </div>
            </form>
-         </AuroraBackground>
+        
           
     
         
