@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
 
+
 const links = [
     { 
       name: 'Dashboard', 
@@ -50,6 +51,7 @@ export default function NavLinks(){
             </Link>
           )
         })}
+        <button className='text-white'>LogOut</button>
         </>
     )
 }

@@ -1,11 +1,12 @@
 datasource db {
   provider = "mongodb"
   url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+
 }
  
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
 }
 enum UserRole {
   ADMIN 
