@@ -1,13 +1,15 @@
 import Image from "next/image"
 import RecentActivity from "@/app/components/ui/dashboard/recent-activity";
 import StatusOverview from "@/app/components/ui/dashboard/status-overview";
+import { auth } from "@/auth";
 
-export default function Page(){
 
+export default async function Page(){
+    const session = await auth()
     return( 
         <div className="flex flex-col items-start ">
             <div className="flex items-center justify-between px-10 py-5 w-full border-b border-[#e6eff52d]">
-                <div className="text-[28px] font-semibold leading-normal text-white tracking-[-0.13px] ">Overview</div>
+                <div className="text-[28px] font-semibold leading-normal text-white tracking-[-0.13px] ">Overview </div>
                 <div className="flex items-center gap-7 shrink-0">
                     <div className="w-[255px]  max-h-[50px] py-4 px-5 flex items-center gap-4 rounded-[40px] ring-white/15 ring-1 bg-gradient-to-b from-white/5 from-2% to-white/10 overflow-hidden shrink-0 ">
                         <Image src={"../searchIcon.svg"} alt={"search icon blue thin"} width={20} height={20}/>

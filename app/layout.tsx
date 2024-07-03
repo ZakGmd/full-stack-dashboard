@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Session } from 'next-auth'
+
 import "./globals.css";
-import Provider from "./context/provider";
+import { ApolloProvider } from "@apollo/client";
+import { client } from "./graphQL/apolloClient";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,8 +26,10 @@ export default async function RootLayout({
 
       <html lang="en">
         <body className={`${inter.className} `}>
-          
-            {children}
+         <ApolloProvider client={client}>
+           {children}
+         </ApolloProvider>
+            
           
           
         </body>
