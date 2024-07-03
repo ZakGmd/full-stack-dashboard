@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.10.8",
+    "@apollo/experimental-nextjs-app-support": "^0.11.2",
     "@apollo/server": "^4.10.3",
     "@as-integrations/next": "^3.0.0",
     "@auth/mongodb-adapter": "^3.4.1",

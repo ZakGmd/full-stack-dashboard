@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 
 import "./globals.css";
 import { ApolloProvider } from "@apollo/client";
-import { client } from "./graphQL/apolloClient";
+import { ApolloWrapper } from "./graphQL/apollo-client";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,9 +26,9 @@ export default async function RootLayout({
 
       <html lang="en">
         <body className={`${inter.className} `}>
-         <ApolloProvider client={client}>
+         <ApolloWrapper>
            {children}
-         </ApolloProvider>
+         </ApolloWrapper>
             
           
           
