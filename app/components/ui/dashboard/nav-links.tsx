@@ -4,6 +4,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import clsx from 'clsx';
+import { signOut } from "next-auth/react"
+
 
 
 const links = [
@@ -51,7 +53,7 @@ export default function NavLinks(){
             </Link>
           )
         })}
-        <button className='text-white'>LogOut</button>
+        <button className='text-white' onClick={()=> signOut()}>LogOut</button>
         </>
     )
 }
