@@ -15,8 +15,8 @@ export default auth((req) => {
     return Response.redirect(new URL('/dashboard', req.url))
   }
  
-  if (!isLoggedIn && !req.nextUrl.pathname.startsWith('/login')) {
-    return Response.redirect(new URL('/login', req.url))
+  if (!isLoggedIn && req.nextUrl.pathname.startsWith('/dashboard')) {
+    return Response.redirect(new URL('/', req.url))
   }
 
   console.log("ROUTE :",req.nextUrl.pathname);

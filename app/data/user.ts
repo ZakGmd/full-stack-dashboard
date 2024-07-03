@@ -1,5 +1,5 @@
 import { userAgent } from "next/server";
-import { db } from "../libs/db";
+import  db  from "../libs/db";
 
 
 export const getUserByEmail = async (email: string )=> {

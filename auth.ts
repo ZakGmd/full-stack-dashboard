@@ -6,7 +6,7 @@ import { ExtndUser } from "./next-auth";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   
- /* callbacks: {  
+  callbacks: {  
     async session({ token, session, user }) {
       
       await Promise.all([token, user]);
@@ -24,7 +24,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       console.log({ token, user, session }); 
       return token;
     },
-  },*/
+  },
   adapter: PrismaAdapter(prisma),
   session: { strategy: "jwt" },
   secret: process.env.NEXTAUTH_SECRET,
