@@ -9,6 +9,16 @@ import authConfig from "./auth.config"
 export default auth((req) => {
 
   const isLoggedIn = !!req.auth;
+
+  
+  if (isLoggedIn && !req.nextUrl.pathname.startsWith('/dashboard')) {
+    return Response.redirect(new URL('/dashboard', req.url))
+  }
+ 
+  if (!isLoggedIn && !req.nextUrl.pathname.startsWith('/login')) {
+    return Response.redirect(new URL('/login', req.url))
+  }
+
   console.log("ROUTE :",req.nextUrl.pathname);
   console.log("Is Loggedin" , isLoggedIn) ;
 

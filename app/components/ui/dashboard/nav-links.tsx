@@ -53,7 +53,7 @@ export default function NavLinks(){
             </Link>
           )
         })}
-        <button className='text-white' onClick={()=> signOut()}>LogOut</button>
+        
         </>
     )
 }
