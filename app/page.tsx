@@ -34,7 +34,7 @@ export default function Home() {
     
 
     </div>
-    <div className="w-full relative mb-[60px]">
+    <div className="w-full relative mb-[100px]">
     <div className="mt-[-100px] absolute z-[-10] flex w-full  justify-between">
       <Image src={"./leftBgImg.svg"} height={400} width={400} alt="" className="mt-[-135px]"/>
       <Image src={"./rightBgImg.svg"} height={400} width={400} alt=""/>
@@ -42,11 +42,10 @@ export default function Home() {
     </div>
     
     <div className=" w-full pt-[48px] flex flex-col items-center justify-center overflow-hidden rounded-md">
-      <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center text-white relative z-20">
-      Nexus
+      <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center flex gap-1 items-end  text-white relative z-20">
+      Nexus <span className="text-indigo-500 text-[18px] leading-10 tracking-wider  ">CRM</span>
       </h1>
-      <div className="w-[40rem] h-[200px] relative">
-      
+      <div className="w-[40rem] h-[200px] pt-1 relative">
         <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
         <div className="absolute inset-x-20 top-0 bg-gradient-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />
         <div className="absolute inset-x-60 top-0 bg-gradient-to-r from-transparent via-sky-500 to-transparent h-[5px] w-1/4 blur-sm" />
@@ -57,10 +56,11 @@ export default function Home() {
           maxSize={1}
           particleDensity={1200}
           className="w-full h-full"
-          particleColor="#FFFFFF"
+          particleColor="#BB86FC"
         />
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
       </div>
+      <div className="w-[500px] text-[24px] mt-[-160px] text-center text-white">Get everyone working in a single platform <br /> designed to manage your work.</div>
     </div>
       
   
