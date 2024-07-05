@@ -8,7 +8,7 @@ import { SparklesCore } from "./components/ui/sparkles";
 export default function Home() {
   return (
    <div className="flex flex-col items-center  ">
-    <div className="flex  w-full h-[67px] text-white p-2 mt-1">
+    <div className="flex  w-full h-[67px] text-white  mt-1">
       <div className="flex items-center justify-between w-full gap-5 px-3 py-2 ">
         <div className="flex items-end w-[244px] ">
           <Image 
