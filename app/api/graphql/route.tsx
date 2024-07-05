@@ -1,7 +1,10 @@
-import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { ApolloServer } from '@apollo/server';
-import { gql } from 'graphql-tag';
-import { NextRequest } from 'next/server';
+import { expressMiddleware } from '@apollo/server/express4';
+import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
+import express from 'express';
+import http from 'http';
+import cors from 'cors';
+import gql from 'graphql-tag';
 
 const typeDefs = gql`
   type Query {
@@ -25,12 +28,31 @@ type Ticket{
 
 `;
 
-const server = new ApolloServer({typeDefs});
 
-const handler = startServerAndCreateNextHandler<NextRequest>(server, {
-  context: async req => ({ req }),
+interface MyContext {
+  token?: string;
+}
+
+async function startApolloServer(){
+  const app = express();
+const httpServer = http.createServer(app);
+const server = new ApolloServer<MyContext>({
+  typeDefs,
+  plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
+await server.start();
+app.use(
+  '/graphql',
+  cors<cors.CorsRequest>(),
+  express.json(),
+  expressMiddleware(server, {
+    context: async ({ req }) => ({ token: req.headers.token }),
+  }),
+);
 
-console.log(handler)
-  
-export { handler as GET ,handler as POST } ;
+await new Promise<void>((resolve) => 
+  httpServer.listen({ port: 4000 }, resolve));
+console.log(`🚀 Server ready at http://localhost:4000`);
+}
+
+startApolloServer().catch((err)=> console.log(err))
