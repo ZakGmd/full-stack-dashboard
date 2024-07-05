@@ -1,4 +1,4 @@
-
+"use client"
 
 import Image from "next/image";
 import Login from "@/app/components/ui/login";
@@ -25,7 +25,7 @@ export default function Home() {
           <Link href={"/"} >Blog</Link>
         </div>
         <div className="flex items-center h-[42px]     bg-gradient-to-r from-indigo-500/50 from-[-83%] to-transparent   border-[#BB86FC] rounded-xl  font-medium ">
-          <Link href={"/"} className="text-center h-full w-full flex items-center px-8 border-t border-[#BB86FC] border-l border-b rounded-tl-xl rounded-bl-xl hover:bg-indigo-500/60 duration-200  justify-center ">Registre</Link>
+          <Link href={"/registre"} className="text-center h-full w-full flex items-center px-8 border-t border-[#BB86FC] border-l border-b rounded-tl-xl rounded-bl-xl hover:bg-indigo-500/60 duration-200  justify-center ">Registre</Link>
           <div className="w-[1px]  h-full  bg-[#BB86FC] "></div>
           <Link href={"/login"} className="text-center h-full w-full flex items-center px-8 border-t border-[#BB86FC] border-r border-b rounded-tr-xl rounded-br-xl hover:bg-indigo-500/60 duration-200  justify-center ">SignIn</Link>
           
@@ -62,7 +62,7 @@ export default function Home() {
         <div className="absolute inset-0 w-full h-full bg-black [mask-image:radial-gradient(350px_200px_at_top,transparent_20%,white)]"></div>
       </div>
       <div className="w-[500px] text-[24px] mt-[-160px] mb-[120px] text-center text-white">Get everyone working in a single platform <br /> designed to manage your work.</div>
-      <Link href={"/"} className="px-10 flex gap-2 items-center text-center py-4 rounded-[36px]   bg-gradient-to-r z-10 text-2xl from-[#8C01FA] from-[-2%] border border-black to-black   text-white">Get Started. it's Free <Image src={"arrowright.svg"} alt={"arrow right icon svg "} width={24} height={24}  className="pt-[2px] ml-2"/>
+      <Link href={"/"} className="px-10 flex gap-2 items-center text-center py-4 rounded-[36px]   bg-gradient-to-r z-10 text-2xl from-[#8C01FA] from-[-70%] border border-black to-black   text-white">Get Started. it's Free <Image src={"arrowright.svg"} alt={"arrow right icon svg "} width={24} height={24}  className="pt-[2px] ml-2"/>
       </Link >
     </div>
       

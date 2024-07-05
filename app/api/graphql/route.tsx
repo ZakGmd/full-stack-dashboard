@@ -14,7 +14,7 @@ type User {
  prename: String! 
  age: Int
  email: String! 
-
+ password: String!
  tickets: [Ticket]
 }
 type Ticket{
