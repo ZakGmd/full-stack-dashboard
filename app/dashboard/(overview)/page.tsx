@@ -2,6 +2,7 @@ import Image from "next/image"
 import RecentActivity from "@/app/components/ui/dashboard/recent-activity";
 import StatusOverview from "@/app/components/ui/dashboard/status-overview";
 import { auth } from "@/auth";
+import CreateTask from "@/app/components/ui/dashboard/createdTask";
 
 
 export default async function Page(){
@@ -53,7 +54,7 @@ export default async function Page(){
                                 <Image src={"../mediumIcon.svg"} width={18} height={18} alt=" 2 bars icon svg orange"/>
                             </div>
                          </div>
-                         <div className="inline-flex items-center gap-1 pt-2 px-1 border-t border-t-white/10 w-full  ">
+                         <div className="inline-flex items-center gap-1 pt-2 px-1 border-t border-t-white/10 w-full cursor-pointer  ">
                         <Image src={"../plus-circle.svg"} alt={""} height={18} width={18} />
                         <div className="text-[12px] text-slate-50 leading-tight tracking-[-0.12px]">Create</div>
                     </div>
@@ -66,7 +67,7 @@ export default async function Page(){
                         </div>
                         <Image src={"../three-dots.svg"} alt={""} height={20} width={20} className="cursor-pointer"/>
                     </div>
-                    <div className="inline-flex items-center gap-1 pt-2 px-1 border-t border-t-white/10 w-full  ">
+                    <div className="inline-flex items-center gap-1 pt-2 px-1 border-t border-t-white/10 w-full cursor-pointer " >
                         <Image src={"../plus-circle.svg"} alt={""} height={18} width={18} />
                         <div className="text-[12px] text-slate-50 leading-tight tracking-[-0.12px]">Create</div>
                     </div>
@@ -79,20 +80,22 @@ export default async function Page(){
                         </div>
                         <Image src={"../three-dots.svg"} alt={""} height={20} width={20} className="cursor-pointer"/>
                     </div>
-                    <div className="inline-flex items-center gap-1 pt-2 px-1 border-t border-t-white/10 w-full  ">
+                    <div className="inline-flex items-center gap-1 pt-2 px-1 border-t border-t-white/10 w-full cursor-pointer ">
                         <Image src={"../plus-circle.svg"} alt={""} height={18} width={18} />
                         <div className="text-[12px] text-slate-50 leading-tight tracking-[-0.12px]">Create</div>
                     </div>
-                            </div>
+                        </div>
                       </div>
                       <div className="flex flex-col items-start gap-3 mt-2 w-full">
                             <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px]">Status overview</div>
                             <StatusOverview />
+                            <CreateTask />
                       </div>         
                     </div>
                     <div className="col-span-1  inline-flex flex-col gap-3 items-start px-3">
                       <div className="text-[22px] font-semibold leading-normal text-white tracking-[-0.12px]">Recent activity</div>
                       <RecentActivity/>
+                      
                     </div>
 
                 </div>

@@ -43,7 +43,7 @@ export default function StatusOverview(){
 
     return(
         <>
-            <div className="bg-gradient-to-b w-full  from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] px-10 py-5 mb-[100px]  ">
+            <div className="bg-gradient-to-b w-full  from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] px-10 py-5 mb-[40px]  ">
                 <div className="flex flex-col items-center w-full gap-9 " >
                     <div className="text-[14px] leading-5 tracking-[-0.12px] font-normal text-white text-center ">Get a snapshot of the status of your items. <Link href={"/"} className="text-blue-600 font-light">View all items</Link></div>
                     <div className="flex items-center justify-between w-full">

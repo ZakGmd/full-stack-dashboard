@@ -21,8 +21,18 @@ type User {
   name: String
   email: String
   image: String
-  token: String
-  freinds: [User]
+  task: [Tasks!]!
+  
+}
+type Tasks {
+  id: ID!
+  description: string! 
+  status: string!
+  owner: User!
+  assigneTo: User
+  priority: string!
+  createdAt: DateTime!  
+  updatedAt: DateTime!
 }
 
 type Query {
