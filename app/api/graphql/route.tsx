@@ -3,14 +3,15 @@ import { ApolloServer } from '@apollo/server';
 import { gql } from 'graphql-tag';
 import { NextRequest } from 'next/server';
 import { auth } from '@/auth';
+import { PrismaClient } from '@prisma/client';
 
+const prisma = new PrismaClient() ;
 const resolvers = {
   Query: {
-    me: async (context: { req: NextRequest }) => {
-      const session = await auth();
-      if (!session) return null;
-      return { id: session.user.id, name: session.user.name, email: session.user.email , token: session.user.accessToken };
-    },
+    Users: async () => {
+      const users = await prisma.user.findMany() ;
+      return users ;  
+    }
   },
 };
 
@@ -19,11 +20,13 @@ type User {
   id: ID!
   name: String
   email: String
-  token: String 
+  image: String
+  token: String
+  freinds: [User]
 }
 
 type Query {
-  me: User
+  Users: [User]
 }
 `;
 

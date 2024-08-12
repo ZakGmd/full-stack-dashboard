@@ -1,17 +1,16 @@
-  import NextAuth, { User } from "next-auth";
+  import NextAuth from "next-auth";
   import { PrismaAdapter } from "@auth/prisma-adapter";
   import  prisma from "./app/libs/db";
   import authConfig from "./auth.config"
 
-  
-
+ 
   export const { handlers, auth, signIn, signOut } = NextAuth({
     
     callbacks: {  
       async session({ token, session}) {
         session.user.accessToken = token.accessToken 
         session.user.id = token.sub ;
-        console.log({"session": session.user.accessToken})
+        console.log({"session": session})
         return session;
       },
       async jwt({ token, user , account}) {
@@ -27,6 +26,8 @@
         console.log({"token": token})
         return token
       },
+      
+      
     },
     adapter: PrismaAdapter(prisma),
     session: { strategy: "jwt" },
