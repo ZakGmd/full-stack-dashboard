@@ -1,29 +1,49 @@
+import { auth } from "@/auth"
 import Image from "next/image"
 
-export default function CreateTask() {
+export default async function CreateTask() {
+    const session = await auth()
 
     return(
-        <div className="mx-auto my-0 flex flex-col min-w-[640px]  h-[500px] mb-[100px] ">
-            <div className="flex flex-col w-full h-full rounded-lg bg-gradient-to-b from-white/20 from-2% to-white/10 gap-4 px-6 py-4 ">
-              <div className="flex items-center justify-between">
+        <div className="mx-auto my-0 flex flex-col min-w-[640px]  mb-[100px] ">
+            <div className="flex flex-col w-full h-full rounded-lg bg-gradient-to-b from-white/20 from-2% to-white/10 gap-4  pt-4 ">
+              <div className="flex items-center justify-between border-b pb-2 border-white/10 px-6">
                 <div className="flex items-center gap-3">
-                    <div className="text-[14px] leading-5 text-white tracking-[-0.12px]">Task</div>
-                    <div className="text-[14px] leading-5 text-white tracking-[-0.12px]">Reminder</div>
+                    <div className="text-[14px] leading-5 text-white tracking-[-0.12px] cursor-pointer">Task</div>
+                    <div className="text-[14px] leading-5 text-white/50 tracking-[-0.12px] font-light cursor-pointer">Reminder</div>
                 </div>
+                <Image alt={""} height={20} width={20} src={"./delete.svg"} className="cursor-pointer "/>
               </div>
-              <div className="pt-1 flex flex-col items-start justify-start gap-3">
+              <div className="pt-1 flex flex-col items-start justify-start gap-3 px-6">
                 <div className=" flex items-center justify-center gap-2">
                     <div className="px-4  leading-[22px] border border-gray-500 flex items-center gap-1 rounded text-[12px] font-light text-white/80 tracking-[-0.12px] cursor-pointer ">Select something</div>
                     <div className="p-1 border border-gray-500 rounded cursor-pointer"> <Image src={"/arrowDown.svg"} alt={""} height={14} width={14}/> </div>
                 </div>
-                <div className="w-full">
+                <div className="w-full mt-1">
                     <input type="text" placeholder="Task Name" className="w-full ring-0 bg-white/10 px-2 py-1 rounded-md outline-none placeholder:text-[13px] text-[14px] text-white/70 " />
                 </div>
-                <div></div>
-                <div></div>
-
+                <div className=" w-full bg-white/10 px-2 py-2 rounded-md flex items-center gap-1 justify-start">
+                   <Image src={"/file.svg"} alt={""} height={16} width={16}/> 
+                   <input type="text" placeholder="Add description" className="w-full ring-0 bg-transparent  rounded-md outline-none placeholder:text-[13px] placeholder:font-light text-[14px] text-white/60 " />
+                </div>
+                <div className="flex items-center justify-start gap-2 pt-1 ">
+                    <div className="px-[6px] bg-white/20 rounded-[4px] text-[12px] leading-[22px] cursor-pointer">To Do</div>
+                    <div className="p-[2px] items-center flex border border-white/20 rounded-[4px] cursor-pointer"><Image src={session?.user.image} alt={""} height={16} width={16} className="rounded-full"/></div>
+                    <div className="pl-[3px] pr-[7px] items-center flex gap-[3px]  rounded-[4px] bg-white/20 cursor-pointer">
+                        <Image alt={""} height={16} width={16} src={"./calendar.svg"}/>
+                        <div className="text-[12px] leading-[22px]  ">Today</div>
+                    </div>
+                    <div className="pl-[3px] pr-[7px] items-center flex gap-[3px]  rounded-[4px] bg-white/20 cursor-pointer">
+                        <Image alt={""} height={16} width={16} src={"./flag.svg"}/>
+                        <div className="text-[12px] leading-[22px]  ">Priority</div>
+                    </div>
+                </div>
               </div>
-
+              <div className=" border-t border-white/10 flex items-center justify-end gap-2 px-6 py-3">
+              <div className="px-2 py-1 border border-white/20 font-normal text-[14px] rounded-lg cursor-pointer text-white">Cancel</div>
+                <div className="px-2 py-1 bg-blue-600 text-[14px] cursor-pointer  rounded-lg text-white">Create Task</div>
+                
+              </div>
             </div>
 
         </div>
