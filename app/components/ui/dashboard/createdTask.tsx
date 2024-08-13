@@ -51,7 +51,7 @@ export default  function CreateTask({setOpen} : any) {
                 </div>
               </div>
               <div className=" border-t border-white/10 flex items-center justify-end gap-2 px-6 py-3">
-              <div className="px-2 py-1 border border-white/20 font-normal text-[14px] rounded-lg cursor-pointer text-white">Cancel</div>
+              <div className="px-2 py-1 border border-white/20 font-normal text-[14px] rounded-lg cursor-pointer text-white" onClick={()=>setOpen(false)}>Cancel</div>
                 <div className="px-2 py-1 bg-blue-600 text-[14px] cursor-pointer  rounded-lg text-white">Create Task</div>
                 
               </div>
