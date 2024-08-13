@@ -25,7 +25,7 @@ export default async function RootLayout({
     
 
       <html lang="en">
-        <body className={`${inter.className} bg-black  `}>
+        <body className={`${inter.className} bg-black    `}>
          <ApolloWrapper>
            {children}
          </ApolloWrapper>

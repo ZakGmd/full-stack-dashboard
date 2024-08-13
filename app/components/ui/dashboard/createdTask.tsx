@@ -1,23 +1,25 @@
 import { auth } from "@/auth"
+import { useSession } from "next-auth/react"
 import Image from "next/image"
 
-export default async function CreateTask() {
-    const session = await auth()
+export default  function CreateTask({setOpen} : any) {
+    const session =  useSession()
 
     return(
-        <div className="mx-auto my-0 flex flex-col min-w-[640px]  mb-[100px] ">
+        <div className="  w-full ">
+            <div className="mx-auto  flex flex-col w-[640px]  mb-[100px] ">
             <div className="flex flex-col w-full h-full rounded-lg bg-gradient-to-b from-white/20 from-2% to-white/10 gap-4  pt-4 ">
               <div className="flex items-center justify-between border-b pb-2 border-white/10 px-6">
                 <div className="flex items-center gap-3">
                     <div className="text-[14px] leading-5 text-white tracking-[-0.12px] cursor-pointer">Task</div>
                     <div className="text-[14px] leading-5 text-white/50 tracking-[-0.12px] font-light cursor-pointer">Reminder</div>
                 </div>
-                <Image alt={""} height={20} width={20} src={"./delete.svg"} className="cursor-pointer "/>
+                <Image alt={""} height={20} width={20} src={"./delete.svg"} className="cursor-pointer " onClick={()=>setOpen(false)}/>
               </div>
               <div className="pt-1 flex flex-col items-start justify-start gap-3 px-6">
                 <div className=" flex items-center justify-center gap-2">
                     <div className="px-4  leading-[22px] border border-gray-500 flex items-center gap-1 rounded text-[12px] font-light text-white/80 tracking-[-0.12px] cursor-pointer ">Select something</div>
-                    <div className="p-1 border border-gray-500 rounded cursor-pointer"> <Image src={"/arrowDown.svg"} alt={""} height={14} width={14}/> </div>
+                    <div className="p-1 border border-gray-500 rounded cursor-pointer"> <Image src={"/arrowDown.svg"} alt={""} height={14} width={14} /> </div>
                 </div>
                 <div className="w-full mt-1">
                     <input type="text" placeholder="Task Name" className="w-full ring-0 bg-white/10 px-2 py-1 rounded-md outline-none placeholder:text-[13px] text-[14px] text-white/70 " />
@@ -28,7 +30,7 @@ export default async function CreateTask() {
                 </div>
                 <div className="flex items-center justify-start gap-2 pt-1 ">
                     <div className="px-[6px] bg-white/20 rounded-[4px] text-[12px] leading-[22px] cursor-pointer">To Do</div>
-                    <div className="p-[2px] items-center flex border border-white/20 rounded-[4px] cursor-pointer"><Image src={session?.user.image} alt={""} height={16} width={16} className="rounded-full"/></div>
+                    <div className="p-[2px] items-center flex border border-white/20 rounded-[4px] cursor-pointer"><Image src={session?.data?.user.image} alt={""} height={16} width={16} className="rounded-full"/></div>
                     <div className="pl-[3px] pr-[7px] items-center flex gap-[3px]  rounded-[4px] bg-white/20 cursor-pointer">
                         <Image alt={""} height={16} width={16} src={"./calendar.svg"}/>
                         <div className="text-[12px] leading-[22px]  ">Today</div>
@@ -47,5 +49,8 @@ export default async function CreateTask() {
             </div>
 
         </div>
+
+        </div>
+        
     )
 }
