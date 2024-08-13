@@ -1,13 +1,22 @@
-import { auth } from "@/auth"
 import { useSession } from "next-auth/react"
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 export default  function CreateTask({setOpen} : any) {
     const session =  useSession()
 
     return(
-        <div className="  w-full ">
-            <div className="mx-auto  flex flex-col w-[640px]  mb-[100px] ">
+        <motion.div 
+        className="  w-full "
+        initial={{ opacity: 0, scale: 0.5 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ 
+            duration: 0.400 ,
+            ease: "backOut"
+        }}
+        
+        >
+            <div className="mx-auto  flex flex-col w-[640px]  mb-[140px] ">
             <div className="flex flex-col w-full h-full rounded-lg bg-gradient-to-b from-white/20 from-2% to-white/10 gap-4  pt-4 ">
               <div className="flex items-center justify-between border-b pb-2 border-white/10 px-6">
                 <div className="flex items-center gap-3">
@@ -50,7 +59,7 @@ export default  function CreateTask({setOpen} : any) {
 
         </div>
 
-        </div>
+        </motion.div>
         
     )
 }

@@ -10,7 +10,7 @@ export default function TaskBoard() {
     return(
         <>
         <SessionProvider>
-        <div className="inline-flex items-start gap-3">
+            <div className="inline-flex items-start gap-3">
                         <div className="px-2 py-3 bg-gradient-to-b  from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-4">
                          <div className="flex items-center justify-between shrink-0 ">
                         <div className=" inline-flex items-center gap-1 ">
@@ -66,15 +66,12 @@ export default function TaskBoard() {
                         <div className="text-[12px] text-slate-50 leading-tight tracking-[-0.12px]">Create</div>
                     </div>
                         </div>
-        </div>
-        
+            </div>
             { isOpen && 
-            <div className=" h-full absolute left-0 top-0 flex  items-center justify-center w-full bg-black/50 backdrop-blur-lg" >
-                <CreateTask setOpen={setIsOpen} /> 
+            <div className=" h-full absolute left-0 top-0 flex   items-center justify-center w-full bg-black/50 backdrop-blur-lg" >
+                <CreateTask setOpen={setIsOpen} className="z-10" /> 
             </div>
             }
-        
-
         </SessionProvider>
         
        
