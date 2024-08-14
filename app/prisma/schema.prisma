@@ -19,10 +19,35 @@ model User {
   accounts      Account[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
+  Task Task[] 
+  team Team[]
   @@map("users")
+  
 }
+model Team{
+  id Int @id @default(autoincrement())
+  name String? @default("New team")
+  membres User[]
+}
+model Task {
+  id        Int    @id @default(autoincrement()) 
+  title     String  
+  description  String  @db.Text
+  status       String
+  taskName  String
+  priority     Priority @default(TODO) 
+  createdAt DateTime @default(now()) 
+  udpadetAt DateTime @updatedAt
+  assigneTo   User @relation(fields: [assignToId] , references: [id])
+  assignToId String 
+  
 
+}
+enum Priority{
+  TODO
+  INPROGRESS
+  DONE
+}
 model Account {
   userId            String
   type              String
@@ -35,7 +60,6 @@ model Account {
   scope             String?
   id_token          String?
   session_state     String?
-
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 

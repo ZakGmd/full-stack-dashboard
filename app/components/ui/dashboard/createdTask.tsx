@@ -21,7 +21,7 @@ export default  function CreateTask({setOpen} : any) {
               <div className="flex items-center justify-between border-b pb-2 border-white/10 px-6">
                 <div className="flex items-center gap-3">
                     <div className="text-[14px] leading-5 text-white tracking-[-0.12px] cursor-pointer">Task</div>
-                    <div className="text-[14px] leading-5 text-white/50 tracking-[-0.12px] font-light cursor-pointer hover:text-white">Reminder</div>
+                    <div className="text-[14px] leading-5 text-white/50 tracking-[-0.12px] font-light cursor-pointer hover:text-white/80">Reminder</div>
                 </div>
                 <Image alt={""} height={20} width={20} src={"./delete.svg"} className="cursor-pointer " onClick={()=>setOpen(false)}/>
               </div>
