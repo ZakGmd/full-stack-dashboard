@@ -6,7 +6,7 @@ import { NextRequest } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 
 interface createTaskInput {
-  id: number ,
+
   description: string
 }
 
@@ -20,12 +20,13 @@ const resolvers = {
     }
   },
   Mutation: {
-    createTask : (_: any, {id, description} : createTaskInput) => {
-      const newTask = {
-        id ,
+    createTask : async (_: any, {description} : createTaskInput) => {
+      const newTask = await prisma.task.create({
+       data: {
         description
-      } ;
-      console.log("new Task is ", newTask.id , newTask.description)
+       }
+      })
+      console.log("new Task has a description ", newTask.description)
       return newTask 
       
     }
@@ -46,7 +47,7 @@ type User {
 }
 
 type Tasks {
-  id: ID!
+  
   description: String! 
  
 }
@@ -60,7 +61,7 @@ type Query {
   Users: [User]
 }
 type Mutation {
-  createTask(id: ID! , description: String): Tasks
+  createTask( description: String): Tasks
 }
 
 `;

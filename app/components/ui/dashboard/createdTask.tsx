@@ -2,21 +2,25 @@ import { useSession } from "next-auth/react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { useMutation ,gql } from "@apollo/client";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const ADD_TASK = gql`
-  mutation createTask($description: String!) {
+  mutation CreateTask($description: String!) {
     createTask(description: $description) {
-      
       description
     }
   }
 `;
 
 export default  function CreateTask({setOpen} : any) {
+    const [description , setDescription] = useState("")
     const session =  useSession()
-    const [createTask] = useMutation(ADD_TASK ,{variables: {}}) ;
-   
+    const [createTask, { data, loading, error }] = useMutation(ADD_TASK);
+    if (loading) return 'Submitting...';
+    if (error) return `Submission error! ${error.message}`;
+
+
+
 
 
 
@@ -59,7 +63,9 @@ export default  function CreateTask({setOpen} : any) {
                     type="text" 
                     placeholder="Add description" 
                     className="w-full ring-0 bg-transparent  rounded-md outline-none placeholder:text-[13px] placeholder:font-light text-[14px] text-white/60 " 
-    
+                    onChange={(e)=>{
+                        setDescription(e.target.value)
+                    }}
                     />
                 </div>
                 <div className="flex items-center justify-start gap-2 pt-1 ">
@@ -77,7 +83,11 @@ export default  function CreateTask({setOpen} : any) {
               </div>
               <div className=" border-t border-white/10 flex items-center justify-end gap-2 px-6 py-3">
               <div className="px-2 py-1 border border-white/20 font-normal text-[14px] rounded-lg cursor-pointer text-white hover:bg-white/5 transition" onClick={()=>setOpen(false)}>Cancel</div>
-                <div className="px-2 py-1 bg-blue-600 hover:bg-blue-700 transition text-[14px] cursor-pointer  rounded-lg text-white"  >Create Task</div>
+                <div className="px-2 py-1 bg-blue-600 hover:bg-blue-700 transition text-[14px] cursor-pointer  rounded-lg text-white" 
+                onClick={()=>{
+                    createTask({variables : {description : description}}) ;
+                    setOpen(false)
+                }} >Create Task</div>
                 
               </div>
             </div>
