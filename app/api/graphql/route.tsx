@@ -2,8 +2,14 @@ import { startServerAndCreateNextHandler } from '@as-integrations/next';
 import { ApolloServer } from '@apollo/server';
 import { gql } from 'graphql-tag';
 import { NextRequest } from 'next/server';
-import { auth } from '@/auth';
+
 import { PrismaClient } from '@prisma/client';
+
+interface createTaskInput {
+  id: number ,
+  description: string
+}
+
 
 const prisma = new PrismaClient() ;
 const resolvers = {
@@ -13,9 +19,22 @@ const resolvers = {
       return users ;  
     }
   },
+  Mutation: {
+    createTask : (_: any, {id, description} : createTaskInput) => {
+      const newTask = {
+        id ,
+        description
+      } ;
+      console.log("new Task is ", newTask.id , newTask.description)
+      return newTask 
+      
+    }
+  }
+  
 };
 
 const typeDefs = gql`
+
 type User {
   id: ID!
   name: String
@@ -23,21 +42,27 @@ type User {
   image: String
   task: [Tasks!]!
   
+  
 }
+
 type Tasks {
   id: ID!
-  description: string! 
-  status: string!
-  owner: User!
-  assigneTo: User
-  priority: string!
-  createdAt: DateTime!  
-  updatedAt: DateTime!
+  description: String! 
+ 
+}
+type Team {
+  id: ID! 
+  name: String! 
+  members: [User!]!
 }
 
 type Query {
   Users: [User]
 }
+type Mutation {
+  createTask(id: ID! , description: String): Tasks
+}
+
 `;
 
 const server = new ApolloServer({

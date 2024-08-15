@@ -1,9 +1,24 @@
 import { useSession } from "next-auth/react"
 import Image from "next/image"
 import { motion } from "framer-motion"
+import { useMutation ,gql } from "@apollo/client";
+import { useState } from "react";
+
+const ADD_TASK = gql`
+  mutation createTask($description: String!) {
+    createTask(description: $description) {
+      
+      description
+    }
+  }
+`;
 
 export default  function CreateTask({setOpen} : any) {
     const session =  useSession()
+    const [createTask] = useMutation(ADD_TASK ,{variables: {}}) ;
+   
+
+
 
     return(
         <motion.div 
@@ -31,11 +46,21 @@ export default  function CreateTask({setOpen} : any) {
                     <div className="p-1 border border-gray-500 rounded cursor-pointer hover:bg-white/5 transition"> <Image src={"/arrowDown.svg"} alt={""} height={14} width={14} /> </div>
                 </div>
                 <div className="w-full mt-1">
-                    <input type="text" placeholder="Task Name" className="w-full ring-0 bg-white/10 px-2 py-1 rounded-md outline-none placeholder:text-[13px] text-[14px] text-white/70 " />
+                    <input 
+                    type="text" 
+                    placeholder="Task Name" 
+                    className="w-full ring-0 bg-white/10 px-2 py-1 rounded-md outline-none placeholder:text-[13px] text-[14px] text-white/70 "
+                    
+                    />
                 </div>
                 <div className=" w-full bg-white/10 px-2 py-2 rounded-md flex items-center gap-1 justify-start">
                    <Image src={"/file.svg"} alt={""} height={16} width={16}/> 
-                   <input type="text" placeholder="Add description" className="w-full ring-0 bg-transparent  rounded-md outline-none placeholder:text-[13px] placeholder:font-light text-[14px] text-white/60 " />
+                   <input 
+                    type="text" 
+                    placeholder="Add description" 
+                    className="w-full ring-0 bg-transparent  rounded-md outline-none placeholder:text-[13px] placeholder:font-light text-[14px] text-white/60 " 
+    
+                    />
                 </div>
                 <div className="flex items-center justify-start gap-2 pt-1 ">
                     <div className="px-[6px] bg-white/20 rounded-[4px] text-[12px] leading-[22px] cursor-pointer hover:bg-white/40 transition">To Do</div>
@@ -52,7 +77,7 @@ export default  function CreateTask({setOpen} : any) {
               </div>
               <div className=" border-t border-white/10 flex items-center justify-end gap-2 px-6 py-3">
               <div className="px-2 py-1 border border-white/20 font-normal text-[14px] rounded-lg cursor-pointer text-white hover:bg-white/5 transition" onClick={()=>setOpen(false)}>Cancel</div>
-                <div className="px-2 py-1 bg-blue-600 hover:bg-blue-700 transition text-[14px] cursor-pointer  rounded-lg text-white">Create Task</div>
+                <div className="px-2 py-1 bg-blue-600 hover:bg-blue-700 transition text-[14px] cursor-pointer  rounded-lg text-white"  >Create Task</div>
                 
               </div>
             </div>
