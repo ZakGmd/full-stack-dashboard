@@ -3,6 +3,7 @@ import Image from "next/image"
 import { motion } from "framer-motion"
 import { useMutation ,gql } from "@apollo/client";
 import { useState } from "react";
+import PriorityMenu from "./PriorityMenu";
 
 interface formDataInput{
   title: string ;
@@ -25,7 +26,7 @@ mutation CreateTask($description: String!, $title: String!, $priority: String , 
 
 export default  function CreateTask({setOpen} : any) {
     const session =  useSession()
-   
+   const [priorityIsOpen , setPriorityOpen] = useState<boolean>(false)
     const [formData , setFormData] = useState<formDataInput>({
       title: "" ,
       description: "" ,
@@ -104,10 +105,7 @@ export default  function CreateTask({setOpen} : any) {
                         <Image alt={""} height={16} width={16} src={"./calendar.svg"}/>
                         <div className="text-[12px] leading-[22px]  ">Today</div>
                     </div>
-                    <div className="pl-[3px] pr-[7px] items-center flex gap-[3px]  rounded-[4px] bg-white/20 cursor-pointer hover:bg-white/40 transition">
-                        <Image alt={""} height={16} width={16} src={"./flag.svg"}/>
-                        <div className="text-[12px] leading-[22px]  ">Priority</div>
-                    </div>
+                    <PriorityMenu />
                 </div>
               </div>
               <div className=" border-t border-white/10 flex items-center justify-end gap-2 px-6 py-3">
