@@ -108,7 +108,7 @@ export default  function CreateTask({setOpen} : any) {
                     <PriorityMenu />
                 </div>
               </div>
-              <div className=" border-t border-white/10 flex items-center justify-end gap-2 px-6 py-3">
+              <div className=" border-t border-white/5 flex items-center justify-end gap-2 px-6 py-3">
               <div className="px-2 py-1 border border-white/20 font-normal text-[14px] rounded-lg cursor-pointer text-white hover:bg-white/5 transition" onClick={()=>setOpen(false)}>Cancel</div>
                 <div className="px-2 py-1 bg-blue-600 hover:bg-blue-700 transition text-[14px] cursor-pointer  rounded-lg text-white" 
                   onClick={(prev)=>{

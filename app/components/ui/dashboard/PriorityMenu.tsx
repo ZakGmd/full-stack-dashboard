@@ -28,11 +28,11 @@ export default function PriorityMenu({}) {
         {selectedValue}
         {isOpen && (
 
-          <ul className="absolute pr-[6px] top-full left-0 mt-1 bg-gradient-to-b from-white/30 from-2% to-white/40 backdrop-blur-3xl rounded-[4px] shadow-md ">
+          <ul className="absolute  top-full left-0 mt-1 bg-gradient-to-b from-white/30 from-2% to-white/70 backdrop-blur-3xl  rounded-[4px] shadow-md ">
             {options.map((option) => (
               <li
                 key={option.value}
-                className="pl-3 py-1 flex items-start justify-start text-[12px] leading-[22px] hover:bg-gray-100 "
+                className="pl-3 py-1 pr-[17px]  flex items-start justify-start text-[12px] leading-[22px] hover:bg-white hover:rounded-[4px] hover:transition duration-200 "
                 onClick={() => handleSelect(option.value)}
               >
                 {option.label}
