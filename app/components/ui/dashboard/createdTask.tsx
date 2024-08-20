@@ -2,19 +2,46 @@ import { useSession } from "next-auth/react"
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { useMutation ,gql } from "@apollo/client";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
+interface formDataInput{
+  title: string ;
+  description: string ;
+  priority: string ;
+  ownerId: string
+
+  
+}
 const ADD_TASK = gql`
-  mutation CreateTask($description: String!) {
-    createTask(description: $description) {
-      description
+mutation CreateTask($description: String!, $title: String!, $priority: String , $ownerId: String) {
+  createTask( description: $description, title: $title, priority: $priority ,ownerId: $ownerId ) {
+      description 
+      title 
+      priority
+      ownerId
     }
   }
 `;
 
 export default  function CreateTask({setOpen} : any) {
-    const [description , setDescription] = useState("")
     const session =  useSession()
+   
+    const [formData , setFormData] = useState<formDataInput>({
+      title: "" ,
+      description: "" ,
+      priority: "Low" ,
+      ownerId: session?.data?.user.id
+   
+    }) ;
+    const handleFormData = (e : React.ChangeEvent<HTMLInputElement>) =>{
+      const {name , value} = e.target ;
+      setFormData((prevFormData)=>({
+        ...prevFormData ,
+        [name]: value ,
+      }));
+      console.log({formData})
+    }
+    
     const [createTask, { data, loading, error }] = useMutation(ADD_TASK);
     if (loading) return 'Submitting...';
     if (error) return `Submission error! ${error.message}`;
@@ -42,10 +69,10 @@ export default  function CreateTask({setOpen} : any) {
                     <div className="text-[14px] leading-5 text-white tracking-[-0.12px] cursor-pointer">Task</div>
                     <div className="text-[14px] leading-5 text-white/50 tracking-[-0.12px] font-light cursor-pointer hover:text-white/80">Reminder</div>
                 </div>
-                <Image alt={""} height={20} width={20} src={"./delete.svg"} className="cursor-pointer " onClick={()=>setOpen(false)}/>
+                <Image alt={""} height={20} width={20} src={"./delete.svg"} className="cursor-pointer " onClick={(prev)=>setOpen(!prev)}/>
               </div>
               <div className="pt-1 flex flex-col items-start justify-start gap-3 px-6">
-                <div className=" flex items-center justify-center gap-2">
+                <div className=" flex items-ceenter justify-center gap-2">
                     <div className="px-4  leading-[22px] border border-gray-500 flex items-center gap-1 rounded text-[12px] font-light text-white/80 tracking-[-0.12px] cursor-pointer ">Select something</div>
                     <div className="p-1 border border-gray-500 rounded cursor-pointer hover:bg-white/5 transition"> <Image src={"/arrowDown.svg"} alt={""} height={14} width={14} /> </div>
                 </div>
@@ -54,7 +81,9 @@ export default  function CreateTask({setOpen} : any) {
                     type="text" 
                     placeholder="Task Name" 
                     className="w-full ring-0 bg-white/10 px-2 py-1 rounded-md outline-none placeholder:text-[13px] text-[14px] text-white/70 "
-                    
+                    value={formData.title}
+                    name="title"
+                    onChange={handleFormData}
                     />
                 </div>
                 <div className=" w-full bg-white/10 px-2 py-2 rounded-md flex items-center gap-1 justify-start">
@@ -63,9 +92,9 @@ export default  function CreateTask({setOpen} : any) {
                     type="text" 
                     placeholder="Add description" 
                     className="w-full ring-0 bg-transparent  rounded-md outline-none placeholder:text-[13px] placeholder:font-light text-[14px] text-white/60 " 
-                    onChange={(e)=>{
-                        setDescription(e.target.value)
-                    }}
+                    value={formData.description}
+                    name="description"
+                    onChange={handleFormData}
                     />
                 </div>
                 <div className="flex items-center justify-start gap-2 pt-1 ">
@@ -84,9 +113,15 @@ export default  function CreateTask({setOpen} : any) {
               <div className=" border-t border-white/10 flex items-center justify-end gap-2 px-6 py-3">
               <div className="px-2 py-1 border border-white/20 font-normal text-[14px] rounded-lg cursor-pointer text-white hover:bg-white/5 transition" onClick={()=>setOpen(false)}>Cancel</div>
                 <div className="px-2 py-1 bg-blue-600 hover:bg-blue-700 transition text-[14px] cursor-pointer  rounded-lg text-white" 
-                onClick={()=>{
-                    createTask({variables : {description : description}}) ;
-                    setOpen(false)
+                  onClick={(prev)=>{
+                    createTask({
+                      variables : {
+                        description : formData.description ,
+                        title: formData.title , 
+                        priority: formData.priority,  
+                        ownerId: formData.ownerId
+                      }}) ;
+                    setOpen(!prev)
                 }} >Create Task</div>
                 
               </div>

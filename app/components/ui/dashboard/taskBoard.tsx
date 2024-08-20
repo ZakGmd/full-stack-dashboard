@@ -6,7 +6,7 @@ import { SessionProvider } from "next-auth/react";
 export default function TaskBoard() {
     const [isOpen , setIsOpen] = useState(false) ;
 
-    console.log(isOpen)
+   
     return(
         <>
         <SessionProvider>

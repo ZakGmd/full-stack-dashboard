@@ -10,7 +10,7 @@
       async session({ token, session}) {
         session.user.accessToken = token.accessToken 
         session.user.id = token.sub ;
-        console.log({"session": session})
+       
         return session;
       },
       async jwt({ token, user , account}) {
@@ -23,7 +23,7 @@
           token.id = account.id
         }
       
-        console.log({"token": token})
+        
         return token
       },
       

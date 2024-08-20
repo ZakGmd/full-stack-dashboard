@@ -1,6 +1,3 @@
--- CreateEnum
-CREATE TYPE "Priority" AS ENUM ('TODO', 'INPROGRESS', 'DONE');
-
 -- CreateTable
 CREATE TABLE "users" (
     "id" TEXT NOT NULL,
@@ -28,12 +25,10 @@ CREATE TABLE "Task" (
     "id" SERIAL NOT NULL,
     "title" TEXT NOT NULL,
     "description" TEXT NOT NULL,
-    "status" TEXT NOT NULL,
-    "taskName" TEXT NOT NULL,
-    "priority" "Priority" NOT NULL DEFAULT 'TODO',
+    "ownerId" TEXT NOT NULL,
+    "priority" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "udpadetAt" TIMESTAMP(3) NOT NULL,
-    "assignToId" TEXT NOT NULL,
 
     CONSTRAINT "Task_pkey" PRIMARY KEY ("id")
 );
@@ -82,7 +77,7 @@ CREATE UNIQUE INDEX "_TeamToUser_AB_unique" ON "_TeamToUser"("A", "B");
 CREATE INDEX "_TeamToUser_B_index" ON "_TeamToUser"("B");
 
 -- AddForeignKey
-ALTER TABLE "Task" ADD CONSTRAINT "Task_assignToId_fkey" FOREIGN KEY ("assignToId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Task" ADD CONSTRAINT "Task_ownerId_fkey" FOREIGN KEY ("ownerId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "accounts" ADD CONSTRAINT "accounts_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
