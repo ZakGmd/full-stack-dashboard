@@ -26,14 +26,19 @@ mutation CreateTask($description: String!, $title: String!, $priority: String , 
 
 export default  function CreateTask({setOpen} : any) {
     const session =  useSession()
-   const [priorityIsOpen , setPriorityOpen] = useState<boolean>(false)
     const [formData , setFormData] = useState<formDataInput>({
       title: "" ,
       description: "" ,
-      priority: "Low" ,
+      priority: "" ,
       ownerId: session?.data?.user.id
    
     }) ;
+    const handlePrioritySelect = (selectedPriority: string) => {
+      setFormData((prevData) => ({
+        ...prevData,
+        priority: selectedPriority,
+      }));
+    };
     const handleFormData = (e : React.ChangeEvent<HTMLInputElement>) =>{
       const {name , value} = e.target ;
       setFormData((prevFormData)=>({
@@ -42,7 +47,6 @@ export default  function CreateTask({setOpen} : any) {
       }));
       console.log({formData})
     }
-    
     const [createTask, { data, loading, error }] = useMutation(ADD_TASK);
     if (loading) return 'Submitting...';
     if (error) return `Submission error! ${error.message}`;
@@ -105,7 +109,8 @@ export default  function CreateTask({setOpen} : any) {
                         <Image alt={""} height={16} width={16} src={"./calendar.svg"}/>
                         <div className="text-[12px] leading-[22px]  ">Today</div>
                     </div>
-                    <PriorityMenu />
+                    <PriorityMenu  
+                    onPrioritySelect={handlePrioritySelect}/>
                 </div>
               </div>
               <div className=" border-t border-white/5 flex items-center justify-end gap-2 px-6 py-3">

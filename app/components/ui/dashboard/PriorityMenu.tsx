@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 
-export default function PriorityMenu({}) {
+export default function PriorityMenu({onPrioritySelect} : {onPrioritySelect : (selectedPriority: string) => void}) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState<string>('Priority');
 
@@ -17,6 +17,7 @@ export default function PriorityMenu({}) {
 
   const handleSelect = (value:string) => {
     setSelectedValue(value);
+    onPrioritySelect(value)
     setIsOpen(false);
   };
 
@@ -28,7 +29,7 @@ export default function PriorityMenu({}) {
         {selectedValue}
         {isOpen && (
 
-          <ul className="absolute  top-full left-0 mt-1 bg-gradient-to-b from-white/30 from-2% to-white/70 backdrop-blur-3xl  rounded-[4px] shadow-md ">
+          <ul className="absolute  top-full left-0 mt-1 bg-gradient-to-b from-white/30 from-2% to-white/50 backdrop-blur-3xl  rounded-[4px] shadow-md border border-slate-300 ">
             {options.map((option) => (
               <li
                 key={option.value}
