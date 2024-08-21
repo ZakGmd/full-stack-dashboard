@@ -11,8 +11,16 @@ const prisma = new PrismaClient() ;
 const resolvers = {
   Query: {
     Users: async () => {
-      const users = await prisma.user.findMany() ;
+      const users = await prisma.user.findMany({
+        include: {
+          Task: true ,
+        }
+      }) ;
       return users ;  
+    },
+    getTasks: async () => {
+      const tasks = await prisma.task.findMany()
+      return tasks 
     }
   },
   Mutation: {
@@ -44,7 +52,7 @@ type User {
   name: String
   email: String
   image: String
-  task: [Tasks!]!
+  Task: [Tasks!]!
   
   
 }
@@ -66,6 +74,9 @@ type Team {
 
 type Query {
   Users: [User]
+}
+type Query {
+  getTasks(description: String , title: String , priority: String , ownerId: String ): [Tasks]
 }
 type Mutation {
   createTask(description: String , title: String , priority: String , ownerId: String ): Tasks

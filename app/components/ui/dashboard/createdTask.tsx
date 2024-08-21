@@ -48,7 +48,7 @@ export default  function CreateTask({setOpen} : any) {
       console.log({formData})
     }
     const [createTask, { data, loading, error }] = useMutation(ADD_TASK);
-    if (loading) return 'Submitting...';
+    
     if (error) return `Submission error! ${error.message}`;
 
 
@@ -125,7 +125,7 @@ export default  function CreateTask({setOpen} : any) {
                         ownerId: formData.ownerId
                       }}) ;
                     setOpen(!prev)
-                }} >Create Task</div>
+                }} >Create Task{loading ? "Creating" :""}</div>
                 
               </div>
             </div>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function PriorityMenu({onPrioritySelect} : {onPrioritySelect : (selectedPriority: string) => void}) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState<string>('Priority');
 
   const options = [
@@ -29,17 +30,25 @@ export default function PriorityMenu({onPrioritySelect} : {onPrioritySelect : (s
         {selectedValue}
         {isOpen && (
 
-          <ul className="absolute  top-full left-0 mt-1 bg-gradient-to-b from-white/30 from-2% to-white/50 backdrop-blur-3xl  rounded-[4px] shadow-md border border-slate-300 ">
+          <motion.ul 
+            className="absolute  top-full left-0 mt-1 bg-gradient-to-b from-white/15 from-50% to-white/25 backdrop-blur-3xl backdrop-brightness-150 rounded-[4px] shadow-md border border-white/40 "
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ 
+                duration: 0.400 ,
+                ease: "backOut"
+            }}
+            >
             {options.map((option) => (
               <li
                 key={option.value}
-                className="pl-3 py-1 pr-[17px]  flex items-start justify-start text-[12px] leading-[22px] hover:bg-white hover:rounded-[4px] hover:transition duration-200 "
+                className="pl-3 py-1 pr-[17px]  flex items-start justify-start text-[12px] leading-[22px] text-white hover:bg-white/50 hover:text-black hover:rounded-[4px] hover:transition duration-200 "
                 onClick={() => handleSelect(option.value)}
               >
                 {option.label}
               </li>
             ))}
-          </ul>
+          </motion.ul>
         )}
       </div>
      
