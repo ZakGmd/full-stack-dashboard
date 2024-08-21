@@ -34,8 +34,9 @@ export default function PriorityMenu({onPrioritySelect} : {onPrioritySelect : (s
             className="absolute  top-full left-0 mt-1 bg-gradient-to-b from-white/15 from-50% to-white/25 backdrop-blur-3xl backdrop-brightness-150 rounded-[4px] shadow-md border border-white/40 "
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
+           
             transition={{ 
-                duration: 0.400 ,
+                duration: 0.320 ,
                 ease: "backOut"
             }}
             >
