@@ -7,10 +7,10 @@ export default function PriorityMenu({onPrioritySelect} : {onPrioritySelect : (s
   const [selectedValue, setSelectedValue] = useState<string>('Priority');
 
   const options = [
-    { value: 'Low', label: 'Low' },
-    { value: 'Medium', label: 'Medium' },
-    { value: 'High', label: 'High' },
-    { value: 'Urgent', label: 'Urgent' }
+    { value: 'Low', label: 'Low' , icon: '../flag-low.svg'},
+    { value: 'Medium', label: 'Medium' , icon: '../flag-normal.svg' },
+    { value: 'High', label: 'High' , icon: '../flag-high.svg'},
+    { value: 'Urgent', label: 'Urgent', icon: '../flag-urgent.svg' }
   ];
 
   const handleToggle = () => {
@@ -24,9 +24,8 @@ export default function PriorityMenu({onPrioritySelect} : {onPrioritySelect : (s
   };
 
   return (
-    <div className="pl-[3px] pr-[7px] items-center flex gap-[3px] rounded-[4px] bg-white/20 cursor-pointer hover:bg-white/40 transition relative" onClick={handleToggle}>
-      <Image alt="" height={16} width={16} src={"./flag.svg"} />
-      
+    <div className="pl-[4px] pr-[7px] items-center justify-center flex gap-[6px] rounded-[4px] bg-white/20 cursor-pointer hover:bg-white/40 transition relative" onClick={handleToggle}>
+      <Image alt="" height={14} width={14} src={selectedValue === "Urgent" ? "../flag-urgent.svg" : selectedValue === "High" ? "../flag-high.svg" : selectedValue === "Medium" ? "../flag-normal.svg" : selectedValue === "Low" ? "../flag-low.svg" : "../flag.svg"} /> 
       <div className="text-[12px] leading-[22px]">
         {selectedValue}
         {isOpen && (
@@ -44,10 +43,11 @@ export default function PriorityMenu({onPrioritySelect} : {onPrioritySelect : (s
             {options.map((option) => (
               <li
                 key={option.value}
-                className="pl-3 py-1 pr-[17px]  flex items-start justify-start text-[12px] leading-[22px] text-white hover:bg-white/50 hover:text-black hover:rounded-[4px] hover:transition duration-200 "
+                className="pl-2 py-1 pr-[21px] gap-2 flex r text-[12px] leading-[20px] text-white hover:bg-black/50 hover:text-white hover:rounded-[4px] hover:transition duration-200 "
                 onClick={() => handleSelect(option.value)}
               >
-                {option.label}
+                <Image src={option.icon} alt={''} height={9} width={9} />
+                <div className=''>{option.label}</div>
               </li>
             ))}
           </motion.ul>
