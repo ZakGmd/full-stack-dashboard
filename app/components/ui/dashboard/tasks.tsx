@@ -21,6 +21,7 @@ export default function Tasks() {
     if (error) return `Error! ${error.message}`;
     if (loading) return 'Loading...';
     const tasks = data?.getTasks
+
     console.log(tasks)
     return(
         <div>
@@ -36,7 +37,7 @@ export default function Tasks() {
                     <Image src={"../checkIcon.svg"} alt="check icon blue svg" width={14} height={14} />
                     <span className="text-[12px] leading-normal tracking-[-0.12px] font-normal text-gray-400">{task.description}</span>
                 </div>
-                <Image src={"../mediumIcon.svg"} width={18} height={18} alt=" 2 bars icon svg orange"/>
+                <Image src={task.priority === "Urgent" ? "../flag-urgent.svg" : task.priority === "High" ? "../flag-high.svg" : task.priority === "Medium" ? "../flag-normal.svg" : "../flag-low.svg"} width={18} height={18} alt=" 2 bars icon svg orange"/>
                 </div>
               </div>
              )

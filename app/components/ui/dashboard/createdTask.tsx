@@ -61,7 +61,6 @@ export default  function CreateTask({setOpen} : any) {
 
 
 
-
     return(
         <motion.div 
         className="  w-full "
@@ -131,7 +130,7 @@ export default  function CreateTask({setOpen} : any) {
                         ownerId: formData.ownerId
                       }}) ;
                     setOpen(!prev)
-                }} >Create Task{loading ? "Creating" :""}</div>
+                }} >Create Task</div>
                 
               </div>
             </div>

@@ -10,6 +10,7 @@ export default function PriorityMenu({onPrioritySelect} : {onPrioritySelect : (s
     { value: 'Low', label: 'Low' },
     { value: 'Medium', label: 'Medium' },
     { value: 'High', label: 'High' },
+    { value: 'Urgent', label: 'Urgent' }
   ];
 
   const handleToggle = () => {
