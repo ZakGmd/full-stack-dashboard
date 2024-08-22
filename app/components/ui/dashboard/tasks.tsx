@@ -6,7 +6,7 @@ type TaskType = {
     description: string ,
     priority: string 
 }
-const GET_Tasks = gql`
+export const GET_Tasks = gql`
   query getTask{
     getTasks{
       id
