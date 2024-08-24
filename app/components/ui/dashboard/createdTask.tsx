@@ -63,7 +63,7 @@ export default  function CreateTask({setOpen} : any) {
 
     return(
         <motion.div 
-        className="  w-full "
+        className="  w-full  "
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ 

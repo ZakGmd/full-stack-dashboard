@@ -25,7 +25,7 @@ export default function PriorityMenu({onPrioritySelect} : {onPrioritySelect : (s
 
   return (
     <div className={`pl-[4px] pr-[7px] items-center justify-center ${ selectedValue === "Urgent" ? "bg-[#B13A4145] text-white hover:bg-[#B13A4160] hover:duration-200" : selectedValue === "Medium" ? "bg-[#4466ff45] text-white hover:bg-[#4466FF55] hover:duration-200 " : selectedValue === "High" ? "bg-[#cf940a45] text-white hover:bg-[#CF940A55] hover:duration-100 hover:transition-colors" : "" } transition-colors duration-200 ease-out flex gap-[6px] rounded-[4px] bg-white/20 cursor-pointer hover:bg-white/40  relative`} onClick={handleToggle}>
-      <Image alt="" height={14} width={14} src={selectedValue === "Urgent" ? "../flag-urgent.svg" : selectedValue === "High" ? "../flag-high.svg" : selectedValue === "Medium" ? "../flag-normal.svg" : selectedValue === "Low" ? "../flag-low.svg" : "../flag.svg"} /> 
+      <Image alt="" height={12} width={12} src={selectedValue === "Urgent" ? "../flag-urgent.svg" : selectedValue === "High" ? "../flag-high.svg" : selectedValue === "Medium" ? "../flag-normal.svg" : selectedValue === "Low" ? "../flag-low.svg" : "../flag.svg"} /> 
       <div className="text-[12px] leading-[22px]">
         {selectedValue}
         {isOpen && (
