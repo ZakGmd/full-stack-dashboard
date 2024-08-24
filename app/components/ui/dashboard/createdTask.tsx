@@ -73,7 +73,7 @@ export default  function CreateTask({setOpen} : any) {
         
         >
             <div className="mx-auto  flex flex-col w-[640px]  mb-[140px] ">
-            <div className="flex flex-col w-full h-full rounded-lg bg-gradient-to-b from-white/20 from-2% to-white/10 gap-4  pt-4 ">
+            <div className="flex flex-col w-full h-full rounded-lg bg-gradient-to-b from-white/20 from-2% to-white/10 gap-4  pt-4  ">
               <div className="flex items-center justify-between border-b pb-2 border-white/10 px-6">
                 <div className="flex items-center gap-3">
                     <div className="text-[14px] leading-5 text-white tracking-[-0.12px] cursor-pointer">Task</div>
