@@ -24,7 +24,7 @@ export default function PriorityMenu({onPrioritySelect} : {onPrioritySelect : (s
   };
 
   return (
-    <div className={`pl-[4px] pr-[7px] items-center justify-center ${ selectedValue === "Urgent" ? "bg-[#B13A4160] text-white hover:bg-[#B13A4170] hover:duration-200" : selectedValue === "Medium" ? "bg-[#4466ff60] text-white hover:bg-[#4466FF70] hover:duration-200 " : selectedValue === "High" ? "bg-[#cf940a60] text-white hover:bg-[#CF940A70] hover:duration-100 hover:transition-colors" : " hover:bg-white/40 bg-white/20 " } transition-all duration-300 ease-linear flex gap-[6px] rounded-[4px]  cursor-pointer contrast-125  relative`} onClick={handleToggle}>
+    <div className={`pl-[4px] pr-[7px] items-center justify-center ${ selectedValue === "Urgent" ? "bg-[#B13A4150] text-white hover:bg-[#B13A4170] hover:duration-200" : selectedValue === "Medium" ? "bg-[#4466ff40] text-white hover:bg-[#4466FF55] hover:duration-200 " : selectedValue === "High" ? "bg-[#cf940a60] text-white hover:bg-[#CF940A70] hover:duration-100 hover:transition-colors" : " hover:bg-white/40 bg-white/20 " } transition-all duration-300 ease-linear flex gap-[6px] rounded-[4px]  cursor-pointer contrast-125  relative`} onClick={handleToggle}>
       <Image alt="" height={12} width={12} src={selectedValue === "Urgent" ? "../flag-urgent.svg" : selectedValue === "High" ? "../flag-high.svg" : selectedValue === "Medium" ? "../flag-normal.svg" : selectedValue === "Low" ? "../flag-low.svg" : "../flag.svg"} /> 
       <div className="text-[12px] leading-[22px]">
         {selectedValue}
