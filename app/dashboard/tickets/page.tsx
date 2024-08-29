@@ -5,7 +5,7 @@ import Ticket from "@/app/components/ui/tickets/ticket" ;
 export default function Tickets(){
 
     return (
-        <div className="flex flex-col items-start  ">
+        <div className="flex flex-col items-start   ">
              <div className="flex items-center justify-between px-10 py-5 w-full border-b border-[#e6eff52d]">
                 <div className="text-[28px] font-semibold leading-normal text-white tracking-[-0.13px] ">Tickets</div>
                 <div className="flex items-center gap-7 shrink-0">
@@ -26,7 +26,7 @@ export default function Tickets(){
             </div>
             <div className=" py-8 px-10 w-full ">
                 <div className="flex flex-col items-start  w-full rounded-xl ring-white/35 ring-1 h-[600px] flex-grow-0 bg-gradient-to-b from-white/0 from-5% via-gray-400/5 via-[11.1%] to-gray-400/10 ">
-                    <div className="flex items-center justify-center border-b border-white/40 ">
+                    <div className="flex items-center justify-center border-b border-white/40 w-full ">
                         <div className="inline-flex items-center justify-center w-[65px]">
                             <input type="checkbox" name="" id="" className="items-center inline-flex" />
                         </div>

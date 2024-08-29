@@ -12,7 +12,7 @@ ChartJS.register(ArcElement, Tooltip, Legend);
     datasets: [
       {
         label: "Todo" ,
-        data: [20, 20, 60],
+        data: [10, 10, 1],
         backgroundColor: [
           'rgba(255, 255, 255, 0.5)',
           'rgba(54, 162, 235, 0.2)',

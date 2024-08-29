@@ -1,7 +1,7 @@
 import { auth } from "@/auth";
 
 
-export default async function () {
+export default async function idk() {
     const session = await auth() ;
     const srrc = session?.user.image as string ;
     return(

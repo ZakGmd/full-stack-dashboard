@@ -4,9 +4,9 @@ export default function Ticket(){
 
     return(
         <>
-          <div className="flex items-center justify-center border-b border-white/40">
-            <div className="inline-flex items-center justify-center w-[65px]">
-                            <input type="checkbox" name="" id="" className="items-center inline-flex" />
+          <div className="flex items-center justify-center border-b border-white/40 w-full">
+            <div className="inline-flex items-start justify-center w-[65px]">
+                            <input type="checkbox" name="" id="" className="items-start inline-flex" />
             </div>
             <div className="text-white text-center w-[109px] border-l border-white/40 py-4 text-[14px] font-medium tracking-[-0.12px] leading-5 h-full ">Type</div>
             <div className="py-4 pl-3 text-white w-[110px] border-l border-r h-full  border-white/40 text-start text-[14px] font-medium tracking-[-0.12px] leading-5 ">Zak-1</div>

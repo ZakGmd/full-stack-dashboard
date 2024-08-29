@@ -1,8 +1,6 @@
 "use client"
 
 import Image from "next/image";
-import Login from "@/app/components/ui/login";
-import { AuroraBackground } from "@/app/components/ui/background";
 import Link from "next/link";
 import { SparklesCore } from "./components/ui/sparkles";
 export default function Home() {
