@@ -20,10 +20,9 @@ export default function TaskBoard() {
         <>
         <SessionProvider>
             <div className="inline-flex items-start gap-3">
-                        
-                        <Todo setOpen={setIsOpen} />
-                        <Progress/>
-                        <Done/>
+                <Todo setOpen={setIsOpen} />
+                <Progress/>
+                <Done/>
             </div>
             { isOpen && 
             <div className=" h-full absolute left-0 top-0 flex   items-center justify-center w-full bg-black/50 backdrop-blur-lg" >
