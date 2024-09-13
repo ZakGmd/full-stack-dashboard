@@ -3,8 +3,6 @@ import Image from "next/image"
 import { useState } from "react"
 import CreateTask from "./createdTask";
 import { SessionProvider } from "next-auth/react";
-
-import Tasks from "./tasks";
 import Todo from "./Todo";
 import Progress from "./inProgress";
 import Done from "./done";
@@ -20,6 +18,7 @@ export default function TaskBoard() {
         <>
         <SessionProvider>
             <div className="inline-flex items-start gap-3">
+                
                 <Todo setOpen={setIsOpen} />
                 <Progress/>
                 <Done/>

@@ -36,6 +36,7 @@ model Task {
   description  String
   ownerId String
   owner   User  @relation(fields: [ownerId], references: [id]) 
+  category    String   @default("Todo")
   priority String
   createdAt DateTime @default(now()) 
   udpadetAt DateTime @updatedAt

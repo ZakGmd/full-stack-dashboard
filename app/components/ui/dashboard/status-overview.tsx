@@ -51,20 +51,18 @@ export default function StatusOverview(){
                         <DoughnutChart type={"doughnut"} data={Data} options={chartOptions}/>
                       </div>
                       <div className=" w-[320px]  items-center flex justify-center">
-                                       <div className="flex flex-col items-start justify-center gap-5 w-full">
-                                       {
-                                            Data.labels.map((label , index)=>{
-                                                return (
-                                                    <div key={index} className="flex items-center justify-between w-full ">
-                                                        <div className="text-white text-[16px] flex items-center gap-2 font-medium leading-normal  tracking-[-0.12px]"><span style={{ backgroundColor: Data.datasets[0].borderColor[index] , width: ' 16px' , height: '16px' , display: "inline-flex" }} className="  rounded-[4px] "></span> {label} :</div>
-                                                        <div className="text-blue-200 text-[14px]  font-normal leading-normal  tracking-[-0.12px]">{Data.datasets[0].data[index]}</div>
-
-                                                    </div>
-                                                    
-                                                )
-                                            })
-                                        }
-                                       </div>
+                        <div className="flex flex-col items-start justify-center gap-5 w-full">
+                          {
+                            Data.labels.map((label , index)=>{
+                              return (
+                                <div key={index} className="flex items-center justify-between w-full ">
+                                  <div className="text-white text-[16px] flex items-center gap-2 font-medium leading-normal  tracking-[-0.12px]"><span style={{ backgroundColor: Data.datasets[0].borderColor[index] , width: ' 16px' , height: '16px' , display: "inline-flex" }} className="  rounded-[4px] "></span> {label} :</div>
+                                   <div className="text-blue-200 text-[14px]  font-normal leading-normal  tracking-[-0.12px]">{Data.datasets[0].data[index]}</div>
+                                </div>
+                                )
+                            })
+                          }
+                        </div>
                       </div>
                      </div>
                 </div>
