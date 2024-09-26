@@ -6,6 +6,7 @@ import { SessionProvider } from "next-auth/react";
 import Todo from "./Todo";
 import Progress from "./inProgress";
 import Done from "./done";
+import { DndContext } from "@dnd-kit/core";
 
 
 
@@ -18,9 +19,11 @@ export default function TaskBoard() {
         <>
         <SessionProvider>
             <div className="inline-flex items-start gap-3">
-                
-                <Todo setOpen={setIsOpen} />
+                <DndContext>
+                    <Todo setOpen={setIsOpen} />
                 <Progress/>
+                </DndContext>
+                
                 <Done/>
             </div>
             { isOpen && 

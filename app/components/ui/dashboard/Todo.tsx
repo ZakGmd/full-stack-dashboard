@@ -1,15 +1,20 @@
 import Image from "next/image"
 import Tasks from "./tasks"
 import {closestCenter, DndContext, DragEndEvent, useDroppable} from '@dnd-kit/core';
-import {SortableContext, verticalListSortingStrategy} from '@dnd-kit/sortable';
+import {SortableContext, verticalListSortingStrategy ,arrayMove} from '@dnd-kit/sortable';
 import { gql, useQuery } from "@apollo/client";
-import { Suspense, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import Droppable from "./droppble";
+import Draggable from "./draggable";
 type TaskType = {
     id: string ,
     title: string ,
     description: string ,
     priority: string  , 
     category: string 
+}
+type T = {
+    task: TaskType
 }
   const GET_Tasks = gql`
   query getTask{
@@ -26,21 +31,49 @@ type TaskType = {
 
 export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) {
    
-    const { data, loading, error } = useQuery(GET_Tasks); 
-    if (error) return `Error! ${error.message}`;
-    const filtredTasks = data?.getTasks.filter((t:TaskType)=>{ 
-        const trimmedCategory = t.category.trim().toLowerCase();
-        return trimmedCategory === 'todo';
-    })
-    const [taskData, setTask] = useState<TaskType[]>(filtredTasks)
-    function handleDragEnd(event: DragEndEvent){
-        return console.log("event is :",  event )
-    }
+    const { data, loading, error } = useQuery(GET_Tasks ,{
+        notifyOnNetworkStatusChange: true 
+    }); 
+        if (error) return `Error! ${error.message}`;
+        const filtredTasks = data?.getTasks.filter((t:TaskType)=>{ 
+            const trimmedCategory = t.category.trim().toLowerCase();
+            return trimmedCategory === 'todo';
+        })
+        
+    const [task , setTask] = useState<TaskType[]>([])  
+
+    useEffect(()=>{
+        if(filtredTasks) {
+            setTask(filtredTasks)
+        }
+    },[data])
+
+    
+    console.log({task})
+        
+        function handleDragEnd(event : DragEndEvent) {
+            const {active, over} = event;
+            if(over && active.id !== over.id ){
+                setTask((items)=>{
+                    const oldIndex = items?.findIndex(item => item?.id === active.id) ;
+                    const newIndex = items?.findIndex(item => item?.id === over.id ) ;
+                    var array = arrayMove(items.slice() , oldIndex , newIndex) ;
+                    console.log({array})
+                    return array
+
+            })
+            }
+            console.log({active , over})
+        }
     
 
     return(
          
-        <DndContext onDragEnd={handleDragEnd}>  
+        <DndContext
+         onDragEnd={handleDragEnd}
+         collisionDetection={closestCenter}
+         >  
+            <Droppable > 
             <div className="px-2 py-3 bg-gradient-to-b   from-white/5 from-2% contrast-150 to-white/10 ring-1 ring-white/15  rounded-[8px] max-w-[270px] min-w-[270px]  flex flex-col gap-4 " >
             <div className="flex items-center justify-between shrink-0  ">
                 <div className=" inline-flex items-center gap-1 ">
@@ -52,12 +85,13 @@ export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) 
             <div>
                 { loading ?(
                         <div>loading</div>
-                    ):(
-                            <SortableContext items={filtredTasks} strategy={verticalListSortingStrategy}>
-                              {filtredTasks.map((task : TaskType)=>(
-                                <Tasks tasks={task} key={task.id} />
-                              ))}
-                            </SortableContext>  
+                    ):(     
+                        <SortableContext items={task} strategy={verticalListSortingStrategy}>
+                            {task?.map((task : TaskType)=>(
+                              <Tasks task={task} key={task.id} />
+                            ))}
+                        </SortableContext>
+                               
                     )
                     }  
             </div>
@@ -69,6 +103,7 @@ export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) 
                         </div>
                     </div>
             </div>
+            </Droppable>
             </DndContext>
              
       
