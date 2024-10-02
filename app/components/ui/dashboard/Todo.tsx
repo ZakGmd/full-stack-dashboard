@@ -6,6 +6,7 @@ import { gql, useQuery } from "@apollo/client";
 import { Suspense, useEffect, useState } from "react";
 import Droppable from "./droppble";
 import Draggable from "./draggable";
+import prisma from "@/app/libs/db";
 type TaskType = {
     id: string ,
     title: string ,
@@ -29,24 +30,23 @@ type T = {
 `;
 
 
+
 export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) {
-   
     const { data, loading, error } = useQuery(GET_Tasks ,{
         notifyOnNetworkStatusChange: true 
     }); 
-        if (error) return `Error! ${error.message}`;
-        const filtredTasks = data?.getTasks.filter((t:TaskType)=>{ 
+   const [task , setTask] = useState<TaskType[]>([])  
+    const filtredTasks = data?.getTasks.filter((t:TaskType)=>{ 
             const trimmedCategory = t.category.trim().toLowerCase();
             return trimmedCategory === 'todo';
-        })
+    })
         
-    const [task , setTask] = useState<TaskType[]>([])  
-
     useEffect(()=>{
         if(filtredTasks) {
             setTask(filtredTasks)
         }
     },[data])
+    if (error) return `Error! ${error.message}`;
 
     
     console.log({task})
@@ -59,9 +59,11 @@ export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) 
                     const newIndex = items?.findIndex(item => item?.id === over.id ) ;
                     var array = arrayMove(items.slice() , oldIndex , newIndex) ;
                     console.log({array})
+                   
                     return array
 
             })
+            
             }
             console.log({active , over})
         }

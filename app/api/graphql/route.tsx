@@ -25,17 +25,26 @@ const resolvers = {
     }
   },
   Mutation: {
-    createTask : async (_: any, args:{description: string , title:string ,priority:string , ownerId: string}) => {
-      const {description , title , priority , ownerId} = args
+    createTask : async (_: any, args:{description: string , title:string ,priority:string , ownerId: string , id?: number}) => {
+      const {description , title , priority , ownerId , id} = args ;
+      let existingTask = await prisma.task.count({
+        where:{
+          id: id 
+        }
+      });
+      console.log({existingTask})
       const newTask = prisma.task.create({
         data:{
-          ...args
+          ...args,
+          id: existingTask + 1
         }
       })
-       console.log("new Task ", args)
+       console.log("new Task ", args )
+     
        return newTask ;
-    }
-  }
+    } ,
+   
+  } 
 };
 
 const typeDefs = gql`
@@ -68,6 +77,9 @@ type Query {
 }
 type Mutation {
   createTask(description: String , title: String , priority: String , ownerId: String ): Tasks
+}
+type Mutation {
+  updateTaskId(id: String): Tasks
 }
 `;
 const server = new ApolloServer({

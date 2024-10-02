@@ -15,8 +15,8 @@ interface formDataInput{
   
 }
 const ADD_TASK = gql`
-mutation CreateTask($description: String!, $title: String!, $priority: String , $ownerId: String) {
-  createTask( description: $description, title: $title, priority: $priority ,ownerId: $ownerId ) {
+mutation CreateTask($description: String!, $title: String!, $priority: String , $ownerId: String ) {
+  createTask( description: $description, title: $title, priority: $priority ,ownerId: $ownerId ) {  
       description 
       title 
       priority
@@ -32,7 +32,6 @@ export default  function CreateTask({setOpen} : any) {
       description: "" ,
       priority: "" ,
       ownerId: session?.data?.user.id
-   
     }) ;
     const handlePrioritySelect = (selectedPriority: string) => {
       setFormData((prevData) => ({

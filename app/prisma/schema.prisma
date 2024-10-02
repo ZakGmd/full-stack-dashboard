@@ -31,7 +31,7 @@ model Team {
 }
 
 model Task {
-  id        Int    @id @default(autoincrement()) 
+  id        Int    @id 
   title     String  
   description  String
   ownerId String
