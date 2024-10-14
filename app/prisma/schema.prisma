@@ -31,10 +31,11 @@ model Team {
 }
 
 model Task {
-  id        Int    @id 
+  id        String    @id @default(uuid())
   title     String  
   description  String
   ownerId String
+  position Int? 
   owner   User  @relation(fields: [ownerId], references: [id]) 
   category    String   @default("Todo")
   priority String

@@ -2,7 +2,7 @@ import Image from "next/image"
 import Tasks from "./tasks"
 import {closestCenter, DndContext, DragEndEvent, useDroppable} from '@dnd-kit/core';
 import {SortableContext, verticalListSortingStrategy ,arrayMove} from '@dnd-kit/sortable';
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 import { Suspense, useEffect, useState } from "react";
 import Droppable from "./droppble";
 import Draggable from "./draggable";
@@ -12,45 +12,51 @@ type TaskType = {
     title: string ,
     description: string ,
     priority: string  , 
-    category: string 
+    category: string ,
+    position: number
 }
 type T = {
     task: TaskType
 }
-  const GET_Tasks = gql`
+  const GET_TASKS = gql`
   query getTask{
     getTasks{
       id
       title
+      position
       description
       priority
       category
     }
   }
 `;
-
-
-
+const UPDATE_TASK_POSITION = gql`
+  mutation updateTaskPosition($id: ID!, $position: Int!) {
+    updateTaskPosition(id : $id , position: $position) {
+      id
+      position
+    }
+  }
+`;
 export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) {
-    const { data, loading, error } = useQuery(GET_Tasks ,{
+    const { data, loading, error } = useQuery(GET_TASKS ,{
         notifyOnNetworkStatusChange: true 
     }); 
+    const [updateTaskPosition] = useMutation(UPDATE_TASK_POSITION);
    const [task , setTask] = useState<TaskType[]>([])  
     const filtredTasks = data?.getTasks.filter((t:TaskType)=>{ 
             const trimmedCategory = t.category.trim().toLowerCase();
             return trimmedCategory === 'todo';
     })
-        
+    const sortedTasks = task?.sort((a: TaskType, b: TaskType) => a.position + b.position);
+    console.log({sortedTasks})
     useEffect(()=>{
         if(filtredTasks) {
             setTask(filtredTasks)
         }
     },[data])
     if (error) return `Error! ${error.message}`;
-
-    
-    console.log({task})
-        
+        console.log({task})
         function handleDragEnd(event : DragEndEvent) {
             const {active, over} = event;
             if(over && active.id !== over.id ){
@@ -59,16 +65,17 @@ export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) 
                     const newIndex = items?.findIndex(item => item?.id === over.id ) ;
                     var array = arrayMove(items.slice() , oldIndex , newIndex) ;
                     console.log({array})
-                   
                     return array
-
             })
-            
-            }
+            updateTaskPosition({
+                variables: {
+                    id: active.id ,
+                    position: 2 
+                }
+            })
+        }
             console.log({active , over})
         }
-    
-
     return(
          
         <DndContext
@@ -89,15 +96,13 @@ export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) 
                         <div>loading</div>
                     ):(     
                         <SortableContext items={task} strategy={verticalListSortingStrategy}>
-                            {task?.map((task : TaskType)=>(
+                            {sortedTasks?.map((task : TaskType)=>(
                               <Tasks task={task} key={task.id} />
                             ))}
                         </SortableContext>
-                               
                     )
                     }  
             </div>
-                      
                     <div className=" gap-1 pt-2 px-1 border-t border-t-white/10 " >
                         <div className="flex items-center cursor-pointer gap-1" onClick={()=>setOpen(true)}>
                             <Image src={"../plus-circle.svg"} alt={""} height={18} width={18} />
@@ -107,8 +112,5 @@ export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) 
             </div>
             </Droppable>
             </DndContext>
-             
-      
-       
     )
 }

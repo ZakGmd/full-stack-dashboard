@@ -25,26 +25,33 @@ const resolvers = {
     }
   },
   Mutation: {
-    createTask : async (_: any, args:{description: string , title:string ,priority:string , ownerId: string , id?: number}) => {
-      const {description , title , priority , ownerId , id} = args ;
-      let existingTask = await prisma.task.count({
-        where:{
-          id: id 
-        }
-      });
-      console.log({existingTask})
-      const newTask = prisma.task.create({
+    createTask : async (_: any, args:{description: string , title:string ,priority:string , ownerId: string , position: number }) => {
+      const {description , title , priority , ownerId  } = args ;
+      var calcPosition = await prisma.task.count() ;
+      const newTask = await prisma.task.create({
         data:{
           ...args,
-          id: existingTask + 1
+          position: calcPosition + 1
+        
         }
       })
        console.log("new Task ", args )
      
        return newTask ;
     } ,
-   
-  } 
+    updateTaskPosition: async (_:any, args:{position: number , id: string}) =>{
+      const {position , id} = args ;
+       const updatedTaskPositin = await prisma.task.update({
+        where: {
+          id : id
+        } ,
+        data: {
+          position: position 
+        }
+       })
+    }
+  } ,
+  
 };
 
 const typeDefs = gql`
@@ -61,6 +68,7 @@ type Tasks {
   description: String! 
   ownerId: ID!
   owner: User!
+  position: Int
   category: String!
   priority: String
 }
@@ -73,13 +81,13 @@ type Query {
   Users: [User]
 }
 type Query {
-  getTasks(description: String , title: String , priority: String , ownerId: String ): [Tasks]
+  getTasks(description: String ,position: Int , title: String , priority: String , ownerId: String ): [Tasks]
 }
 type Mutation {
-  createTask(description: String , title: String , priority: String , ownerId: String ): Tasks
+  createTask(description: String , title: String , priority: String , ownerId: String , position: Int): Tasks
 }
 type Mutation {
-  updateTaskId(id: String): Tasks
+  updateTaskPosition(position: Int , id: ID): Tasks
 }
 `;
 const server = new ApolloServer({
