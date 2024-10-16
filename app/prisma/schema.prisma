@@ -30,6 +30,13 @@ model Team {
   membres User[]  @relation("TeamToUser")
 }
 
+enum Priority {
+  LOW
+  MEDIUM 
+  HIGH
+  URGENT
+}
+
 model Task {
   id        String    @id @default(uuid())
   title     String  
@@ -38,7 +45,7 @@ model Task {
   position Int? 
   owner   User  @relation(fields: [ownerId], references: [id]) 
   category    String   @default("Todo")
-  priority String
+  priority Priority @default(LOW)
   createdAt DateTime @default(now()) 
   udpadetAt DateTime @updatedAt
  

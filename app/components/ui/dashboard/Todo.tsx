@@ -48,21 +48,21 @@ export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) 
             const trimmedCategory = t.category.trim().toLowerCase();
             return trimmedCategory === 'todo';
     })
-    const sortedTasks = task?.sort((a: TaskType, b: TaskType) => a.position + b.position);
-    console.log({sortedTasks})
+    const sortedTasks = task?.sort((a: TaskType, b: TaskType) => a.position - b.position);
     useEffect(()=>{
         if(filtredTasks) {
             setTask(filtredTasks)
         }
     },[data])
     if (error) return `Error! ${error.message}`;
-        console.log({task})
         function handleDragEnd(event : DragEndEvent) {
             const {active, over} = event;
             if(over && active.id !== over.id ){
                 setTask((items)=>{
                     const oldIndex = items?.findIndex(item => item?.id === active.id) ;
                     const newIndex = items?.findIndex(item => item?.id === over.id ) ;
+                    const draggedTask : TaskType = items?.[oldIndex] ;
+                    console.log(draggedTask.priority)
                     var array = arrayMove(items.slice() , oldIndex , newIndex) ;
                     console.log({array})
                     return array
@@ -70,11 +70,10 @@ export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) 
             updateTaskPosition({
                 variables: {
                     id: active.id ,
-                    position: 2 
+                    position: 3 
                 }
             })
         }
-            console.log({active , over})
         }
     return(
          
