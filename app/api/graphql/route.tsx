@@ -62,12 +62,7 @@ type User {
   image: String
   Task: [Tasks!]!
 }
-enum Priority {
-  LOW
-  MEDIUM 
-  HIGH 
-  URGENT
-}
+
 type Tasks {
   id: ID!
   title: String!
@@ -76,7 +71,7 @@ type Tasks {
   owner: User!
   position: Int
   category: String!
-  priority: Priority!
+  priority: String
 }
 type Team {
   id: ID! 

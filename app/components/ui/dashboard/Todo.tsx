@@ -5,8 +5,7 @@ import {SortableContext, verticalListSortingStrategy ,arrayMove} from '@dnd-kit/
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { Suspense, useEffect, useState } from "react";
 import Droppable from "./droppble";
-import Draggable from "./draggable";
-import prisma from "@/app/libs/db";
+
 type TaskType = {
     id: string ,
     title: string ,
@@ -18,7 +17,7 @@ type TaskType = {
 type T = {
     task: TaskType
 }
-  const GET_TASKS = gql`
+  const GET_Task = gql`
   query getTask{
     getTasks{
       id
@@ -39,16 +38,19 @@ const UPDATE_TASK_POSITION = gql`
   }
 `;
 export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) {
-    const { data, loading, error } = useQuery(GET_TASKS ,{
+    const { data, loading, error } = useQuery(GET_Task ,{
         notifyOnNetworkStatusChange: true 
     }); 
     const [updateTaskPosition] = useMutation(UPDATE_TASK_POSITION);
+
    const [task , setTask] = useState<TaskType[]>([])  
     const filtredTasks = data?.getTasks.filter((t:TaskType)=>{ 
-            const trimmedCategory = t.category.trim().toLowerCase();
+            const trimmedCategory = t.priority.trim().toLowerCase();
             return trimmedCategory === 'todo';
     })
     const sortedTasks = task?.sort((a: TaskType, b: TaskType) => a.position - b.position);
+
+    console.log({filtredTasks})
     useEffect(()=>{
         if(filtredTasks) {
             setTask(filtredTasks)
