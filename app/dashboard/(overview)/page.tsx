@@ -11,10 +11,10 @@ export default async function Page(){
     const GoogleImage = session?.user.image
     return( 
         <div className="flex flex-col items-start  ">
-            <div className="flex items-center justify-between px-10 py-5 w-full border-b border-[#e6eff52d]">
+            <div className="flex items-center justify-between px-10 py-3 w-full border-b border-[#e6eff52d]">
                 <div className="text-[28px] font-semibold leading-normal text-white tracking-[-0.13px] "> {session?.user.name} </div>
                 <div className="flex items-center gap-7 shrink-0">
-                    <div className="w-[255px]  max-h-[50px] py-4 px-5 flex items-center gap-4 rounded-[40px] ring-white/15 ring-1 bg-gradient-to-b from-white/5 from-2% to-white/10 overflow-hidden shrink-0 ">
+                    <div className="max-w-[230px]  max-h-[50px] py-2 px-5 flex items-center gap-4 rounded-[40px] ring-white/15 ring-1 bg-gradient-to-b from-white/5 from-2% to-white/10 overflow-hidden shrink-0 ">
                         <Image src={"../searchIcon.svg"} alt={"search icon blue thin"} width={20} height={20}/>
                         <input type="text" name="search" id="searchInput" placeholder="Search for Something" className=" bg-transparent  ring-0 outline-none max-w-[176px] placeholder:text-[15px] placeholder:font-normal placeholder:text-white/20 text-white/40 placeholder:bg-transparent" />
                     </div>

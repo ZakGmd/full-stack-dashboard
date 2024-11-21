@@ -8,7 +8,7 @@ export default function Done() {
                     <div className="flex items-center justify-between shrink-0 ">
                         <div className=" inline-flex items-center gap-1 ">
                             <Image src={"../dots-6.svg"} alt={""} height={18} width={18}/>
-                            <div className={` px-[4px] py-[3px] bg-[#e1fff3fd] ring-1 ring-white/5 text-center text-[11px] flex items-center font-[800] rounded text-[#174b36] tracking-[-0.13px] uppercase leading-3 `}>DONE</div>
+                            <div className={` px-[4px] py-[3px] bg-[#e1fff3fd] ring-1 ring-white/5 text-center text-[11px] flex items-center font-[700] rounded text-[#174b36] tracking-[-0.13px] uppercase leading-3 `}>DONE</div>
                         </div>
                         <Image src={"../three-dots.svg"} alt={""} height={20} width={20} className="cursor-pointer"/>
                     </div>

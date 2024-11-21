@@ -5,8 +5,6 @@ import {SortableContext, verticalListSortingStrategy ,arrayMove} from '@dnd-kit/
 import { gql, useMutation, useQuery } from "@apollo/client";
 import { Suspense, useEffect, useState } from "react";
 import Droppable from "./droppble";
-import Draggable from "./draggable";
-import prisma from "@/app/libs/db";
 type TaskType = {
     id: string ,
     title: string ,
@@ -70,7 +68,7 @@ export default function Todo({setOpen} : {setOpen: (isOpen: boolean) => void} ) 
             updateTaskPosition({
                 variables: {
                     id: active.id ,
-                    position: 2 
+                    position: 3
                 }
             })
         }

@@ -26,7 +26,8 @@ const resolvers = {
   },
   Mutation: {
     createTask : async (_: any, args:{description: string , title:string ,priority:string , ownerId: string , position: number }) => {
-      const {description , title , priority , ownerId  } = args ;
+      const {description , title , priority , ownerId , position } = args ;
+
       var calcPosition = await prisma.task.count() ;
       const newTask = await prisma.task.create({
         data:{

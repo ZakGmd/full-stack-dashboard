@@ -6,20 +6,24 @@ export default function SideNav(){
 
     return(
         <>
-        <form className="w-[220px] h-full shrink-0 flex flex-col gap-7 " action={
+        <form className=" h-full shrink-0 flex pr-4 flex-col py-8 gap-5  " action={
           async() =>{
             "use server"
             await signOut()
           }
         }>
-           <div className="max-w-[183px] flex items-center gap-3 pr-7 pl-11 pt-[30px] ">
-            <Image src={"/admin-panel.png"} alt={"admin svg logo"} width={33} height={33} />
-            <div className="text-[24px] font-extrabold leading-normal tracking-[-0.12px] text-white">Dashboard</div>
+           <div className=" flex items-center gap-3 px-2   ">
+            <Image src={"/admin-panel.png"} alt={"admin svg logo"} width={24} height={24} className="px-1 py-1 border border-white/20 rounded-md" />
+            <div className="text-[16px] font-semibold leading-normal tracking-[-0.12px] text-white">Dashboard</div>
            </div>
-           <div className="flex flex-col pt-4 pr-9 gap-10 ">
+           <div className="flex flex-col  gap-2 ">
              <NavLinks/>
            </div>
-           <button className='text-white' type="submit">LogOut</button>
+           <div className="flex gap-2 bg-[#b13a4224] items-center px-1 py-2 rounded-md hover:bg-[#b13a4252] duration-300 cursor-pointer">
+            <Image src={"/logout.svg"} alt={""} width={24} height={24}/>
+            <button className='text-white text-[13px]' type="submit">Log out</button>
+           </div>
+           
         </form>
         </>
     )

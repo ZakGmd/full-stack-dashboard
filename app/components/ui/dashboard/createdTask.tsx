@@ -10,9 +10,7 @@ interface formDataInput{
   title: string ;
   description: string ;
   priority: string ;
-  ownerId: string
-
-  
+  ownerId: string ;
 }
 const ADD_TASK = gql`
 mutation CreateTask($description: String!, $title: String!, $priority: String , $ownerId: String ) {
