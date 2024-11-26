@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import { useMutation ,gql } from "@apollo/client";
 import { useState } from "react";
 import PriorityMenu from "./PriorityMenu";
-import { GET_Tasks } from "./tasks";
+import { GET_TASKS } from "./taskBoard";
 
 interface formDataInput{
   title: string ;
@@ -47,7 +47,7 @@ export default  function CreateTask({setOpen} : any) {
     }
     const [createTask, { data, loading, error }] = useMutation(ADD_TASK ,{
       refetchQueries: [
-        GET_Tasks,
+        GET_TASKS,
         'getTask'
       ] ,
     });

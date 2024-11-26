@@ -4,7 +4,7 @@ import Image from "next/image"
 export default function Done() {
 
     return(
-        <div className="px-2 py-3 bg-gradient-to-b from-white/5 from-2% contrast-125 to-white/10 ring-1 ring-white/15  rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-9 ">
+        <div className="px-2 py-3 bg-gradient-to-b from-white/25 from-[-200%] contrast-150 to-white/10 ring-1 ring-white/15  rounded-[8px] min-w-[270px] max-w-[270px]  flex flex-col gap-9 ">
                     <div className="flex items-center justify-between shrink-0 ">
                         <div className=" inline-flex items-center gap-1 ">
                             <Image src={"../dots-6.svg"} alt={""} height={18} width={18}/>

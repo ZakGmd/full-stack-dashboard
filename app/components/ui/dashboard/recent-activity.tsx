@@ -5,7 +5,7 @@ export default function RecentActivity(){
 
     return(
         <>
-            <div className="h-[270px] py-4 px-3 inline-flex gap-4 flex-col items-start w-full  bg-gradient-to-b from-white/5 from-2% to-white/10 ring-1 ring-white/15  rounded-[8px] ">
+            <div className="h-[270px] py-4 px-3 inline-flex gap-4 flex-col items-start w-full  bg-gradient-to-b from-white/25 from-[-200%] contrast-150 to-white/10 ring-1 ring-white/15  rounded-[8px] ">
                 <div className="text-[13px] text-white/90 leading-none tracking-[-0.12px]">Track project progress</div>
                 <div className="w-full h-[0.5px] bg-white/10"></div>
                 <div className="flex flex-col gap-3">
